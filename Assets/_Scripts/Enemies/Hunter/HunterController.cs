@@ -52,8 +52,11 @@ public class HunterController : EnemyController
         // Al entrar en contacto con una bala
         if (collision.CompareTag("PlayerBullet"))
         {
+            // Obtenemos la bala que nos choco, para poder usarla de parametro en TakeDamage
+            GameObject bullet = collision.gameObject;
+
             // Efectuamos el daño
-            TakeDamage();
+            TakeDamage(bullet);
         }
     }
 }

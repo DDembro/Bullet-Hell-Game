@@ -12,14 +12,11 @@ public class PlayerBulletController : MonoBehaviour
     // RigidBody de la bala
     private Rigidbody2D rb;
 
-    private void Awake()
+    private void Start()
     {
         // Obtenemos la referencia al controller del jugador
         playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-    }
 
-    private void Start()
-    {
         // Inicializamos las estadisticas
         BulletSpeed = playerController._BulletSpeed;
         BulletDamage = playerController._BulletDamage;

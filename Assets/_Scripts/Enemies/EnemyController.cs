@@ -39,22 +39,19 @@ public abstract class EnemyController : MonoBehaviour
 
     protected void GetBullet(string prefabRute)
     {
-        // Obtenemos la bala especificada y le asignamos las estadisticas que deseamos
+        // Obtenemos la bala especifica
         bulletPrefab = Resources.Load<GameObject>(prefabRute);
-
-        bulletPrefab.GetComponent<EnemyBulletController>().BulletDam = BulletDamage;
-        bulletPrefab.GetComponent<EnemyBulletController>().BulletSpe = BulletSpeed;
     }
 
-    private void GetPlayerBullet()
+    private void GetPlayerBullet(GameObject bullet)
     {
         // Obtenemos el daño de la bala
-        playerDamage = playerController._BulletDamage;
+        playerDamage = bullet.GetComponent<PlayerBulletController>().BulletDamage;
     }
 
-    protected void TakeDamage()
+    protected void TakeDamage(GameObject bullet)
     {
-        GetPlayerBullet();
+        GetPlayerBullet(bullet);
 
         // Recibe daño del jugador
         Health -= playerDamage;
@@ -99,6 +96,9 @@ public abstract class EnemyController : MonoBehaviour
         // Instanciamos la bala en la posicion y la rotacion pasada por parametro
         GameObject bullet = Instantiate(bulletPrefab, pos, rot);
         actualMultipleShoot--;
+
+        // Pasar la referencia al objeto padre al objeto bullet
+        bullet.GetComponent<EnemyBulletController>().SetParentObject(this);
 
         // Esperamos el CoolDown del arma para volver a disparar
         yield return new WaitForSeconds(FireRate);
