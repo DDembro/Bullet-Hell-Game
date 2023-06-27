@@ -7,7 +7,7 @@ public class EnemyBulletController : MonoBehaviour
 
     // Atributos de la bala
     private float bulletSpeed;
-    private float bulletDamage;
+    public float BulletDamage;
 
     // RigidBody de la bala
     private Rigidbody2D rb;
@@ -22,7 +22,7 @@ public class EnemyBulletController : MonoBehaviour
     {
         // Definimos la velocidad y el daño segun las estadisticas del enemigo que la disparo
         bulletSpeed = parentObject.BulletSpeed;
-        bulletDamage = parentObject.BulletDamage;
+        BulletDamage = parentObject.BulletDamage;
 
         // En caso de que la bala viaje hacia el infinito, la destruimos luego de unos segundos
         Destroy(gameObject, 3.5f);

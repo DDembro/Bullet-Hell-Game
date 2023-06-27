@@ -27,6 +27,8 @@ public abstract class EnemyController : MonoBehaviour
     private int actualMultipleShoot;
     public int MultipleShoot;
 
+    // Prefab de la explosion
+    private GameObject explosionPrefab;
 
     private void Awake()
     {
@@ -35,6 +37,9 @@ public abstract class EnemyController : MonoBehaviour
 
         // Obtenemos la referencia al controller del jugador
         playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+
+        // Obtenemos el prefab de la explosion
+        explosionPrefab = Resources.Load<GameObject>("Prefabs/Explosion");
     }
 
     protected void GetBullet(string prefabRute)
@@ -65,7 +70,8 @@ public abstract class EnemyController : MonoBehaviour
 
     protected void Die()
     {
-        // Destruimos el gameObject
+        // Instanciamos una explosion y destruimos el gameObject
+        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 

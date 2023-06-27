@@ -12,6 +12,9 @@ public class HunterController : EnemyController
     // Otras variables
     private float amplitude = 3;
 
+    // Referencia al jugador
+    private GameObject player;
+
     private void Start()
     {
         // Inicializamos las variables
@@ -23,7 +26,7 @@ public class HunterController : EnemyController
         
         this.BulletSpeed = 5f;
         this.BulletDamage = 1f;
-        this.FireRate = 0.5f;
+        this.FireRate = 1f;
         this.MultipleShoot = 2;
 
         // Obtenemos el prefab de la bala que queremos utilizar y le asignamos las estadisticas que predefinimos arriba
@@ -32,6 +35,9 @@ public class HunterController : EnemyController
         // Obtenemos los cañones del arma
         leftCannon = transform.Find("LeftCannon");
         rightCannon = transform.Find("RightCannon");
+
+        // Obtenemos al jugador
+        player = GameObject.FindWithTag("Player");
     }
 
     private void Update()
@@ -45,6 +51,22 @@ public class HunterController : EnemyController
         // Disparamos con ambas armas
         StartCoroutine(Shoot(leftCannon.position, leftCannon.rotation));
         StartCoroutine(Shoot(rightCannon.position, rightCannon.rotation));
+
+        // Si estamos a la altura del jugador, aumentamos la cadencia de disparo significantemente
+        if(transform.position.y < player.transform.position.y + 1.5f && transform.position.y > player.transform.position.y - 1.5f)
+        {
+            FireRate = 0.25f;
+        }
+        else
+        {
+            FireRate = 1f;
+        }
+
+        // Si se alejo demasiado de la pantalla del jugador, lo destruimos
+        if(transform.position.y < -15)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -57,6 +79,13 @@ public class HunterController : EnemyController
 
             // Efectuamos el daño
             TakeDamage(bullet);
+        }
+
+        // Al entrar en contacto con el jugador
+        if (collision.CompareTag("Player"))
+        {
+            // Matamos al enemigo instantaneamente
+            Die();
         }
     }
 }

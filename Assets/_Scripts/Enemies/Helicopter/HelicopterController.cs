@@ -108,5 +108,12 @@ public class HelicopterController : EnemyController
             // Efectuamos el daño
             TakeDamage(bullet);
         }
+
+        // Al entrar en contacto con el jugador
+        if (collision.CompareTag("Player"))
+        {
+            // Matamos al enemigo instantaneamente
+            Die();
+        }
     }
 }

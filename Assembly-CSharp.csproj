@@ -63,9 +63,15 @@
     <Compile Include="Assets\_Scripts\Player\PlayerBulletController.cs" />
     <Compile Include="Assets\_Scripts\Enemies\Hunter\HunterController.cs" />
     <Compile Include="Assets\_Scripts\Enemies\EnemyBulletController.cs" />
+    <Compile Include="Assets\_Scripts\Player\PlayerHealth.cs" />
     <Compile Include="Assets\_Scripts\Player\PlayerController.cs" />
+    <Compile Include="Assets\_Scripts\UI\GamePlayUI.cs" />
     <Compile Include="Assets\_Scripts\Player\PlayerMovement.cs" />
+    <Compile Include="Assets\_Scripts\Others\Explosion\ExplosionController.cs" />
     <Compile Include="Assets\_Scripts\Player\PlayerShooting.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\UI\GamePlayUI.uxml" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
