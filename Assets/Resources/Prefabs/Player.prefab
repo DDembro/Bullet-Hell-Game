@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 3327939795032135860}
   - component: {fileID: 1264929728861186591}
   - component: {fileID: 7758485751687992225}
+  - component: {fileID: 8092925745333344104}
   - component: {fileID: 530325786994173623}
   m_Layer: 10
   m_Name: Player
@@ -245,8 +246,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aa42413c4a4c3d4d940f5cfe7a10cef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletPrefab: {fileID: 2817935995889479587, guid: d093f1b7a88d54f42891dd22f27d65ef, type: 3}
-  GunCannon: {fileID: 2437698467750041723}
 --- !u!114 &7758485751687992225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,6 +258,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 609c76e24712a964d82c61b4f4787bd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Health: 0
+--- !u!114 &8092925745333344104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4383112352766730954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ae846bf4c6fbf4286d7a25676197a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerScore: 0
+  PlayerMoney: 0
 --- !u!114 &530325786994173623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,4 +294,4 @@ MonoBehaviour:
   _fireRate: 0.2
   _BulletSpeed: 10
   _BulletDamage: 1
-  _health: 10
+  _Health: 10

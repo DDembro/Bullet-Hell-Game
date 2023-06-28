@@ -34,7 +34,7 @@ public class PlayerBulletController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Al colisionar con un enemigo la bala se destruye
-        if (collision.CompareTag("Enemy"))
+        if (collision.CompareTag("Enemy") || collision.CompareTag("Rocket"))
         {
             Destroy(gameObject);
         }

@@ -30,17 +30,43 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Al entrar en contacto con una bala
+        // Al entrar en contacto con una bala enemiga
         if (collision.CompareTag("EnemyBullet"))
+        {
+            // Obtenemos la bala que nos choco, para poder usarla de parametro en TakeDamage
+            GameObject bullet = collision.gameObject;
+            
+            // Obtenemos el daño de esa bala
+            float bulletDamage = bullet.GetComponent<EnemyBulletController>().BulletDamage;
+            
+            // Efectuamos el daño
+            TakeDamage(bulletDamage);
+        }
+
+        // Al entrar en contacto con una bala neutral
+        if (collision.CompareTag("NeutralBullet"))
         {
             // Obtenemos la bala que nos choco, para poder usarla de parametro en TakeDamage
             GameObject bullet = collision.gameObject;
 
             // Obtenemos el daño de esa bala
-            float bulletDamage = bullet.GetComponent<EnemyBulletController>().BulletDamage;
+            float bulletDamage = bullet.GetComponent<NeutralBulletController>().BulletDamage;
 
             // Efectuamos el daño
             TakeDamage(bulletDamage);
+        }
+
+        // Al entrar en contacto con un cohete
+        if (collision.CompareTag("Rocket"))
+        {
+            // Obtenemos la bala que nos choco, para poder usarla de parametro en TakeDamage
+            GameObject rocket = collision.gameObject;
+
+            // Obtenemos el daño de ese cohete
+            float rocketDamage = rocket.GetComponent<RocketController>().RocketDamage;
+
+            // Efectuamos el daño
+            TakeDamage(rocketDamage);
         }
 
         // Al entrar en contacto con el jugador

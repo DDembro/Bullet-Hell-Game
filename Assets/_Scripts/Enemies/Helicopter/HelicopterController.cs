@@ -19,6 +19,7 @@ public class HelicopterController : EnemyController
     private float targetPositionY; // Generada de forma aleatoria
     private float maxPositionY = 9f;
     private float minPositionY = 5f;
+
     // Referencia al jugador
     private GameObject player;
 
@@ -36,8 +37,10 @@ public class HelicopterController : EnemyController
         this.FireRate = 0.8f;
         this.MultipleShoot = 1;
 
-        // Obtenemos el prefab de la bala que queremos utilizar y le asignamos las estadisticas que predefinimos arriba
-        GetBullet("Prefabs/EnemyBullet");
+        this.OnDeathScore = 200;
+
+        // Obtenemos el prefab de la bala que queremos utilizar
+        GetBullet("Prefabs/Bullets/EnemyBullet");
 
         // Obtenemos los cañones del arma
         cannon = transform.Find("Cannon");
@@ -100,7 +103,7 @@ public class HelicopterController : EnemyController
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Al entrar en contacto con una bala   
-        if (collision.CompareTag("PlayerBullet"))
+        if (collision.CompareTag("PlayerBullet") || collision.CompareTag("NeutralBullet"))
         {
             // Obtenemos la bala que nos choco, para poder usarla de parametro en TakeDamage
             GameObject bullet = collision.gameObject;

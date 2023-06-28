@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public PlayerShooting PlayerShooting { private set; get; }
     public PlayerBulletController PlayerBulletController { private set; get; }
     public PlayerHealth PlayerHealth { private set; get; }
+    public PlayerEconomy PlayerEconomy { private set; get; }
 
     // Variables del movimiento
     [Header("Movimiento")]
@@ -50,7 +51,7 @@ public class PlayerController : MonoBehaviour
         playerGO = GameObject.FindWithTag("Player");
 
         // Obtenemos la referencia a la bala
-        pBulletPrefab = Resources.Load<GameObject>("Prefabs/PlayerBullet");
+        pBulletPrefab = Resources.Load<GameObject>("Prefabs/Bullets/PlayerBullet");
 
         // Cargamos todas las referencias
         LoadScriptsReferences();
@@ -58,7 +59,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        
+
     }
 
     private void LoadScriptsReferences()
@@ -67,5 +68,6 @@ public class PlayerController : MonoBehaviour
         PlayerShooting = playerGO.GetComponent<PlayerShooting>();
         PlayerBulletController = pBulletPrefab.GetComponent<PlayerBulletController>();
         PlayerHealth = playerGO.GetComponent<PlayerHealth>();
+        PlayerEconomy = playerGO.GetComponent<PlayerEconomy>();
     }
 }

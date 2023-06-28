@@ -27,6 +27,9 @@ public abstract class EnemyController : MonoBehaviour
     private int actualMultipleShoot;
     public int MultipleShoot;
 
+    // Variable de los puntos al morir
+    public float OnDeathScore;
+
     // Prefab de la explosion
     private GameObject explosionPrefab;
 
@@ -42,16 +45,32 @@ public abstract class EnemyController : MonoBehaviour
         explosionPrefab = Resources.Load<GameObject>("Prefabs/Explosion");
     }
 
+    /// <summary>
+    /// Metodo protegido que se encarga de conseguir el prefab de bala que va a utilizar el enemigo
+    /// mediante una ruta por String
+    /// </summary>
+    /// <param name="prefabRute"></param>
     protected void GetBullet(string prefabRute)
     {
         // Obtenemos la bala especifica
         bulletPrefab = Resources.Load<GameObject>(prefabRute);
     }
 
+    /// <summary>
+    /// Metodo privado para obtener el daño de un GameObjetc bala en concreto
+    /// </summary>
+    /// <param name="bullet"></param>
     private void GetPlayerBullet(GameObject bullet)
     {
-        // Obtenemos el daño de la bala
-        playerDamage = bullet.GetComponent<PlayerBulletController>().BulletDamage;
+        // Comprobamos que tipo de bala es y obtenemos su daño
+        if (bullet.CompareTag("PlayerBullet"))
+        {
+            playerDamage = bullet.GetComponent<PlayerBulletController>().BulletDamage;
+        }
+        else if (bullet.CompareTag("NeutralBullet"))
+        {
+            playerDamage = bullet.GetComponent<NeutralBulletController>().BulletDamage;
+        }
     }
 
     protected void TakeDamage(GameObject bullet)
@@ -70,6 +89,9 @@ public abstract class EnemyController : MonoBehaviour
 
     protected void Die()
     {
+        // Añadimos los puntos al jugador por la muerte
+        playerController.PlayerEconomy.AddScore(OnDeathScore);
+
         // Instanciamos una explosion y destruimos el gameObject
         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);

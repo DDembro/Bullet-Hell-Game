@@ -10,8 +10,8 @@ public class PlayerShooting : MonoBehaviour
     private bool shootingInput;
 
     // Prefab de la bala
-    public GameObject BulletPrefab;
-    public Transform GunCannon;
+    private GameObject bulletPrefab;
+    private Transform gunCannon;
 
     // Estadisticas
     private float fireRate;
@@ -32,6 +32,12 @@ public class PlayerShooting : MonoBehaviour
 
         // Inicializamos poder disparar en true
         canShoot = true;
+
+        // Obtenemos el cañon
+        gunCannon = transform.Find("GunCannon");
+
+        // Definimos cual es la bala a utilizar
+        bulletPrefab = Resources.Load<GameObject>("Prefabs/Bullets/PlayerBullet");
     }
 
     private void Update()
@@ -49,7 +55,7 @@ public class PlayerShooting : MonoBehaviour
     private IEnumerator Shoot()
     {
         // Generamos la bala
-        GameObject bullet = Instantiate(BulletPrefab, GunCannon.position, GunCannon.rotation);
+        GameObject bullet = Instantiate(bulletPrefab, gunCannon.position, gunCannon.rotation);
         // Hacemos falso canShoot
         canShoot = false;
 

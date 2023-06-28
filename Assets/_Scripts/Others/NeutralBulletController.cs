@@ -1,9 +1,11 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBulletController : MonoBehaviour
+public class NeutralBulletController : MonoBehaviour
 {
     // Referencia al objeto padre que instancio la bala
-    private EnemyController parentObject;
+    private RocketController parentRocket;
 
     // Atributos de la bala
     private float bulletSpeed;
@@ -12,17 +14,17 @@ public class EnemyBulletController : MonoBehaviour
     // RigidBody de la bala
     private Rigidbody2D rb;
 
-    public void SetParentObject(EnemyController parent)
+    public void SetParentRocket(RocketController parent)
     {
         // Definimos quien fue el enemigo que invoco la bala
-        parentObject = parent;
+        parentRocket = parent;
     }
 
     private void Start()
     {
         // Definimos la velocidad y el daño segun las estadisticas del enemigo que la disparo
-        bulletSpeed = parentObject.BulletSpeed;
-        BulletDamage = parentObject.BulletDamage;
+        bulletSpeed = parentRocket.BulletSpeed;
+        BulletDamage = parentRocket.BulletDamage;
 
         // En caso de que la bala viaje hacia el infinito, la destruimos luego de unos segundos
         Destroy(gameObject, 3.5f);
@@ -37,7 +39,7 @@ public class EnemyBulletController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Al colisionar con un enemigo la bala se destruye
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") || collision.CompareTag("Enemy"))
         {
             Destroy(gameObject);
         }

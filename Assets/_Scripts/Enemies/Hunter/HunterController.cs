@@ -29,8 +29,10 @@ public class HunterController : EnemyController
         this.FireRate = 1f;
         this.MultipleShoot = 2;
 
+        this.OnDeathScore = 100;
+
         // Obtenemos el prefab de la bala que queremos utilizar y le asignamos las estadisticas que predefinimos arriba
-        GetBullet("Prefabs/EnemyBullet");
+        GetBullet("Prefabs/Bullets/EnemyBullet");
 
         // Obtenemos los cañones del arma
         leftCannon = transform.Find("LeftCannon");
@@ -72,7 +74,7 @@ public class HunterController : EnemyController
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Al entrar en contacto con una bala
-        if (collision.CompareTag("PlayerBullet"))
+        if (collision.CompareTag("PlayerBullet") || collision.CompareTag("NeutralBullet"))
         {
             // Obtenemos la bala que nos choco, para poder usarla de parametro en TakeDamage
             GameObject bullet = collision.gameObject;
