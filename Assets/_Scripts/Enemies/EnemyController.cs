@@ -97,7 +97,34 @@ public abstract class EnemyController : MonoBehaviour
         Destroy(gameObject);
     }
 
+    /// <summary>
+    /// Una funcion de muerte mas sofisticada donde se puede tener mas flexibilidad para añadir ciertos comportamientos adicionales
+    /// </summary>
+    /// <param name="explosionRadius"></param>
+    protected void BossDie(float explosionRadius)
+    {
+        // Añadimos los puntos al jugador por la muerte
+        playerController.PlayerEconomy.AddScore(OnDeathScore);
 
+        // Instanciamos una explosion y destruimos el gameObject
+        GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        explosion.transform.localScale *= explosionRadius;
+        Destroy(gameObject);
+    }
+
+    protected void TakeDamageBoss(GameObject bullet, float explosionRadius)
+    {
+        GetPlayerBullet(bullet);
+
+        // Recibe daño del jugador
+        Health -= playerDamage;
+
+        // Si no tiene mas vida, muere
+        if (Health <= 0)
+        {
+            BossDie(explosionRadius);
+        }
+    }
 
     protected IEnumerator Shoot(Vector3 position, Quaternion rotation)
     {
@@ -125,8 +152,15 @@ public abstract class EnemyController : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, pos, rot);
         actualMultipleShoot--;
 
-        // Pasar la referencia al objeto padre al objeto bullet
-        bullet.GetComponent<EnemyBulletController>().SetParentObject(this);
+        if (bullet.CompareTag("EnemyBullet"))
+        {
+            // Pasar la referencia al objeto padre al objeto bullet
+            bullet.GetComponent<EnemyBulletController>().SetParentObject(this);
+        }
+        else if (bullet.CompareTag("Rocket"))
+        {
+            // No hacer nada
+        }
 
         // Esperamos el CoolDown del arma para volver a disparar
         yield return new WaitForSeconds(FireRate);

@@ -19,6 +19,7 @@ public class RocketController : MonoBehaviour
     // Estadisticas de las balas
     public float BulletSpeed = 6f;
     public float BulletDamage = 2f;
+    public float BulletDuration = 0.5f;
 
     // Estadisticas del cohete
     public float RocketDamage = 4f;

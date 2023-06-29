@@ -67,6 +67,7 @@
     <Compile Include="Assets\_Scripts\Player\PlayerHealth.cs" />
     <Compile Include="Assets\_Scripts\Player\PlayerEconomy.cs" />
     <Compile Include="Assets\_Scripts\Enemies\RocketController.cs" />
+    <Compile Include="Assets\_Scripts\Enemies\Titan\TitanController.cs" />
     <Compile Include="Assets\_Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\_Scripts\UI\GamePlayUI.cs" />
     <Compile Include="Assets\_Scripts\Player\PlayerMovement.cs" />

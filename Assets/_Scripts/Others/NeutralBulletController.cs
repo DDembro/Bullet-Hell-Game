@@ -10,6 +10,7 @@ public class NeutralBulletController : MonoBehaviour
     // Atributos de la bala
     private float bulletSpeed;
     public float BulletDamage;
+    private float bulletDuration;
 
     // RigidBody de la bala
     private Rigidbody2D rb;
@@ -25,9 +26,10 @@ public class NeutralBulletController : MonoBehaviour
         // Definimos la velocidad y el daño segun las estadisticas del enemigo que la disparo
         bulletSpeed = parentRocket.BulletSpeed;
         BulletDamage = parentRocket.BulletDamage;
+        bulletDuration = parentRocket.BulletDuration;
 
         // En caso de que la bala viaje hacia el infinito, la destruimos luego de unos segundos
-        Destroy(gameObject, 3.5f);
+        Destroy(gameObject, bulletDuration);
 
         // Obtenemos el RB de la bala
         rb = GetComponent<Rigidbody2D>();
