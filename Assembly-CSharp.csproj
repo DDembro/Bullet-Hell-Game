@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="Assets\_Scripts\Enemies\Helicopter\HelicopterController.cs" />
     <Compile Include="Assets\_Scripts\Enemies\EnemyController.cs" />
+    <Compile Include="Assets\_Scripts\UI\MenuUI.cs" />
     <Compile Include="Assets\_Scripts\Player\PlayerBulletController.cs" />
     <Compile Include="Assets\_Scripts\Enemies\Hunter\HunterController.cs" />
     <Compile Include="Assets\_Scripts\Others\NeutralBulletController.cs" />
@@ -75,6 +76,8 @@
     <Compile Include="Assets\_Scripts\Player\PlayerShooting.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\UI\MenuUI.uxml" />
+    <None Include="Assets\UI\USS\backGround.uss" />
     <None Include="Assets\UI\GamePlayUI.uxml" />
   </ItemGroup>
   <ItemGroup>

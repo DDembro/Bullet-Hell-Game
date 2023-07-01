@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class HunterController : EnemyController
 {
-    // Vector de movimiento
-    private Vector3 movement;
-
     // Cañones de donde se instancia la bala
     private Transform leftCannon;
     private Transform rightCannon;
@@ -45,7 +42,7 @@ public class HunterController : EnemyController
     private void Update()
     {
         // Calculamos el movimiento
-        movement = new Vector3(amplitude * Mathf.Sin(Time.time * HorizontalSpeed) * Time.deltaTime, VerticalSpeed * Time.deltaTime, 0);
+        Vector3 movement = new Vector3(amplitude * Mathf.Sin(Time.time * HorizontalSpeed) * Time.deltaTime, VerticalSpeed * Time.deltaTime, 0);
 
         // Aplicamos el movimiento
         transform.Translate(movement);

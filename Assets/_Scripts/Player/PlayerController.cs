@@ -27,11 +27,11 @@ public class PlayerController : MonoBehaviour
     public float _horizontalSpeed = 7f;
     public float _verticalSpeed = 5f;
 
-    public float _maxHorizontalOffSet = 9f;
-    public float _minHorizontalOffSet = -9f;
+    public float _maxHorizontalOffSet = 11f;
+    public float _minHorizontalOffSet = -11f;
 
     public float _maxVerticalOffSet = 4f;
-    public float _minVerticalOffSet = -9f;
+    public float _minVerticalOffSet = -11f;
 
     // Variables del disparo
     [Header("Disparo")]
@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
 
     // Variables de la vida
     public float _Health = 10f;
+    public float _inmuneTime = 0.5f;
 
     private void Awake()
     {

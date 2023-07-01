@@ -33,6 +33,9 @@ public abstract class EnemyController : MonoBehaviour
     // Prefab de la explosion
     private GameObject explosionPrefab;
 
+    // Componentes del enemigo
+    private SpriteRenderer spriteRenderer;
+
     private void Awake()
     {
         // Inicializamos variables
@@ -73,6 +76,16 @@ public abstract class EnemyController : MonoBehaviour
         }
     }
 
+    protected void Die()
+    {
+        // Añadimos los puntos al jugador por la muerte
+        playerController.PlayerEconomy.AddScore(OnDeathScore);
+
+        // Instanciamos una explosion y destruimos el gameObject
+        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+    }
+
     protected void TakeDamage(GameObject bullet)
     {
         GetPlayerBullet(bullet);
@@ -85,17 +98,11 @@ public abstract class EnemyController : MonoBehaviour
         {
             Die();
         }
+
+        // Mostramos un indicador visual del daño
+        StartCoroutine(HitIndicator());
     }
 
-    protected void Die()
-    {
-        // Añadimos los puntos al jugador por la muerte
-        playerController.PlayerEconomy.AddScore(OnDeathScore);
-
-        // Instanciamos una explosion y destruimos el gameObject
-        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-        Destroy(gameObject);
-    }
 
     /// <summary>
     /// Una funcion de muerte mas sofisticada donde se puede tener mas flexibilidad para añadir ciertos comportamientos adicionales
@@ -124,8 +131,34 @@ public abstract class EnemyController : MonoBehaviour
         {
             BossDie(explosionRadius);
         }
+
+        // Mostramos un indicador visual del daño
+        StartCoroutine(HitIndicator());
     }
 
+    /// <summary>
+    /// Corutina simple que se encarga que dar un indicador visual del daño recibido en el enemigo
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator HitIndicator()
+    {
+        // Si no tenemos el SpriteRenderer, lo conseguimos
+        if(spriteRenderer == null)
+        {
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        }
+
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        spriteRenderer.color = Color.white;
+    }
+
+    /// <summary>
+    /// Corutina protegida que permite al resto de clases enemigas disparar
+    /// </summary>
+    /// <param name="position"></param>
+    /// <param name="rotation"></param>
+    /// <returns></returns>
     protected IEnumerator Shoot(Vector3 position, Quaternion rotation)
     {
         if (actualMultipleShoot < 0)
@@ -145,7 +178,12 @@ public abstract class EnemyController : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Corutina necesaria para que Shoot() funcione correctamente
+    /// </summary>
+    /// <param name="pos"></param>
+    /// <param name="rot"></param>
+    /// <returns></returns>
     private IEnumerator Shooting(Vector3 pos, Quaternion rot)
     {
         // Instanciamos la bala en la posicion y la rotacion pasada por parametro

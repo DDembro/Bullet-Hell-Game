@@ -27,8 +27,9 @@ public class RocketController : MonoBehaviour
     private float rocketRotateSpeed = 100f;
     private float rocketHealth = 5f;
 
-    // RB del cohete
+    // RB y SpriteRenderer del cohete
     private Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer;
 
     private void Start()
     {
@@ -39,8 +40,9 @@ public class RocketController : MonoBehaviour
         // Obtenemos la referencia al jugador
         player = GameObject.FindWithTag("Player");
 
-        // Obtenemos el RB
+        // Obtenemos los componentes
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         // Despues de unos segundos, si todavia no exploto, lo hacemos explotar
         Invoke("Explode", 4.5f);
@@ -105,6 +107,16 @@ public class RocketController : MonoBehaviour
         {
             Explode();
         }
+
+        // Mostramos un indicador visual del daño
+        StartCoroutine(HitIndicator());
+    }
+
+    private IEnumerator HitIndicator()
+    {
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        spriteRenderer.color = Color.white;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

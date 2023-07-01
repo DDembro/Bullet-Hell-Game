@@ -4,28 +4,65 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    // Registro del controller del player
+    // Registro del controller del player y otros componentes
     private PlayerController playerController;
+    private SpriteRenderer spriteRenderer;
+    private Rigidbody2D rb;
 
     // Variables
     public float Health;
+    private float inmuneTime;
 
     private void Awake()
     {
+        // Obtenemos el jugador para simplificar la busqueda mas adelante
+        GameObject player = GameObject.FindWithTag("Player");
+
         // Obtenemos la referencia al controller del jugador
-        playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        playerController = player.GetComponent<PlayerController>();
+        // Obtenemos el SpriteRenderer y su RB
+        spriteRenderer = player.GetComponent<SpriteRenderer>();
+        rb = player.GetComponent<Rigidbody2D>();
+
     }
 
     private void Start()
     {
         // Inicializamos las estadisticas
         Health = playerController._Health;
+        inmuneTime = playerController._inmuneTime;
+
     }
 
     private void TakeDamage(float damage)
     {
         // recibimos daño
         Health -= damage;
+
+        StartCoroutine(ImmunityTime());
+    }
+
+    private IEnumerator ImmunityTime()
+    {
+        // Desactivamos su simulacion para que no pueda ser dañado por proyectiles (ni activarlos)
+        // Y cambiamos su color para generar una respuesta visual del efecto
+        rb.simulated = false;
+
+        // Primero lo pasamos a rojo, y lo hacemos transparente
+        Color hitColor = Color.red;
+        hitColor.a = 0.5f;
+        spriteRenderer.color = hitColor;
+
+        // Luego lo pasamos a su color original pero transparente
+        yield return new WaitForSeconds(0.2f);
+        hitColor = Color.white;
+        hitColor.a = 0.5f;
+        spriteRenderer.color = hitColor;
+
+        // Al finalizar lo volvemos a la normalidad
+        yield return new WaitForSeconds(inmuneTime - 0.2f);
+        rb.simulated = true;
+        spriteRenderer.color = Color.white;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
