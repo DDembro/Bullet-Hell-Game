@@ -50,7 +50,6 @@ public class MenuUI : MonoBehaviour
         #endif
     }
 }
-
 // Faltan funciones para los botones de opciones
 // Estaria bueno incorporar una pantalla de seleccion de niveles
 // Tambien ver donde carajo meto la tienda

@@ -31,8 +31,6 @@ public class NeutralBulletController : MonoBehaviour
         // En caso de que la bala viaje hacia el infinito, la destruimos luego de unos segundos
         Destroy(gameObject, bulletDuration);
 
-        Debug.Log(bulletDuration);
-
         // Obtenemos el RB de la bala
         rb = GetComponent<Rigidbody2D>();
 
