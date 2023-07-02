@@ -17,15 +17,15 @@ public class RocketController : MonoBehaviour
     private float playerDamage;
 
     // Estadisticas de las balas
-    public float BulletSpeed = 6f;
+    public float BulletSpeed = 4f;
     public float BulletDamage = 2f;
-    public float BulletDuration = 0.5f;
+    public float BulletDuration = 1f;
 
     // Estadisticas del cohete
     public float RocketDamage = 4f;
     private float rocketSpeed = 10f;
     private float rocketRotateSpeed = 100f;
-    private float rocketHealth = 5f;
+    private float rocketHealth = 2f;
 
     // RB y SpriteRenderer del cohete
     private Rigidbody2D rb;
@@ -73,10 +73,10 @@ public class RocketController : MonoBehaviour
     private void Explode()
     {
         // Al explotar, creamos un aro de balas
-        for(int i = 0; i < 12; i++)
+        for(int i = 0; i < 24; i++)
         {
             // Instanciamos la bala en la posicion y la rotacion del cohete, y por cada bala rotamos el angulo un poco
-            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.Euler(0f, 0f, 360 / 12 * i));
+            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.Euler(0f, 0f, 360 / 24 * i));
 
             // Pasar la referencia al objeto padre al objeto bullet
             bullet.GetComponent<NeutralBulletController>().SetParentRocket(this);

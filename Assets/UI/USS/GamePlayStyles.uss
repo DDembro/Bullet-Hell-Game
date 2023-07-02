@@ -1,0 +1,55 @@
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+.statsDisplay {
+    color: rgb(255, 255, 255);
+    font-size: 50px;
+}
+
+.bossBar {
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    height: auto;
+    font-size: 30px;
+    -unity-font-style: bold;
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0);
+    -unity-text-outline-width: 1px;
+}
+
+.button {
+    align-items: stretch;
+    align-self: center;
+    max-width: none;
+    min-width: 50%;
+    min-height: 60px;
+    font-size: 20px;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in-out;
+}
+
+.button:hover {
+    transition-duration: 200ms;
+    transition-timing-function: ease-in-out;
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+}
+
+.unity-progress-bar__container {
+    opacity: 1;
+    max-height: 35px;
+    min-height: auto;
+}
+
+.unity-progress-bar__background {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.36);
+}
+
+.unity-progress-bar__progress {
+    background-color: rgb(255, 0, 0);
+    opacity: 0.47;
+}

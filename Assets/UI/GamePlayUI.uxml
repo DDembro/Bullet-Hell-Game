@@ -1,9 +1,36 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
-        <ui:Label tabindex="-1" text="Exp" display-tooltip-when-elided="true" name="experience-label" style="display: flex; visibility: visible; overflow: visible; position: relative; left: 3%; right: 0; top: 5%; bottom: 0; width: 15%; height: auto; -unity-font: url(&apos;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=2a2c93335df8b9d449e21abc4e9ba329&amp;type=3#NotInter-Regular&apos;); -unity-font-style: bold; font-size: 50%; color: rgb(255, 255, 255); -unity-text-align: upper-left; white-space: nowrap; text-overflow: clip; -unity-text-outline-width: 0; -unity-text-outline-color: rgba(0, 0, 0, 0); letter-spacing: 0; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0;">
-            <ui:ProgressBar value="0" title="WIP" style="background-color: rgba(0, 0, 0, 0); top: 200%; color: rgb(0, 0, 0); -unity-text-outline-color: rgba(0, 0, 0, 0);" />
-        </ui:Label>
-        <ui:Label tabindex="-1" text="Score:" display-tooltip-when-elided="true" name="score-count" style="display: flex; visibility: visible; overflow: visible; position: relative; left: 3%; right: 1482px; top: 21%; bottom: 0; width: 15%; height: auto; -unity-font: url(&apos;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=2a2c93335df8b9d449e21abc4e9ba329&amp;type=3#NotInter-Regular&apos;); -unity-font-style: bold; font-size: 39%; color: rgb(255, 255, 255); -unity-text-align: upper-left; white-space: nowrap; text-overflow: clip; -unity-text-outline-width: 0; -unity-text-outline-color: rgba(0, 0, 0, 0); letter-spacing: 0; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0;" />
-        <ui:Label tabindex="-1" text="LIFE:" display-tooltip-when-elided="true" name="health-count" style="display: flex; visibility: visible; overflow: visible; position: relative; left: 3%; right: 0; top: 74%; bottom: 0; width: 15%; height: auto; -unity-font: url(&apos;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=2a2c93335df8b9d449e21abc4e9ba329&amp;type=3#NotInter-Regular&apos;); -unity-font-style: bold; font-size: 50%; color: rgb(255, 255, 255); -unity-text-align: upper-left; white-space: nowrap; text-overflow: clip; -unity-text-outline-width: 0; -unity-text-outline-color: rgba(0, 0, 0, 0); letter-spacing: 0; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0;" />
+    <Style src="project://database/Assets/UI/USS/GamePlayStyles.uss?fileID=7433441132597879392&amp;guid=756e8ea3927a2e244831db9cd6d16d32&amp;type=3#GamePlayStyles" />
+    <ui:VisualElement class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); overflow: visible; flex-wrap: nowrap; flex-shrink: 1; left: auto; position: relative;">
+        <ui:VisualElement name="GamePlayView" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); display: flex;">
+            <ui:VisualElement name="UpperContainer" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); align-items: auto; align-self: auto; height: 10%; flex-direction: column; justify-content: flex-start; flex-wrap: nowrap;">
+                <ui:Label tabindex="-1" text="Level" display-tooltip-when-elided="true" name="level-count" class="statsDisplay" style="justify-content: flex-start; align-self: flex-start;" />
+                <ui:ProgressBar value="30.02" title="BOSS NAME" name="boss-bar" class="bossBar" style="align-self: center; align-items: stretch; justify-content: flex-start; flex-direction: column; overflow: visible; top: -50%; position: relative; visibility: hidden; display: flex;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="DownContainer" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-width: auto; min-height: auto; flex-direction: row; align-items: stretch; justify-content: flex-start;">
+                <ui:VisualElement name="LeftElements" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: space-between;">
+                    <ui:Label tabindex="-1" text="Score:" display-tooltip-when-elided="true" name="score-count" class="statsDisplay" />
+                    <ui:Label tabindex="-1" text="Life:" display-tooltip-when-elided="true" name="health-count" class="statsDisplay" />
+                </ui:VisualElement>
+                <ui:VisualElement name="RightElements" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="MenuView" tabindex="0" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.51); display: none; flex-direction: column; justify-content: center; overflow: visible; visibility: visible; left: auto; position: absolute;">
+            <ui:VisualElement name="MenuBox" class="container" style="flex-grow: 1; background-color: rgb(46, 46, 46); width: 40%; height: auto; max-height: 70%; align-self: center; align-items: stretch; top: auto; bottom: auto; flex-direction: column; justify-content: flex-start;">
+                <ui:Label tabindex="-1" text="Paused" display-tooltip-when-elided="true" name="pause-text" style="color: rgb(255, 255, 255); font-size: 50px; align-items: stretch; align-self: center; -unity-text-align: upper-left; margin-top: 19px;" />
+                <ui:VisualElement name="MenuButtons" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: space-around;">
+                    <ui:Button text="Resume" display-tooltip-when-elided="true" name="resume-button" class="button" />
+                    <ui:Button text="Exit to Menu" display-tooltip-when-elided="true" name="exit-to-menu-button" class="button" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="DeathView" tabindex="0" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.51); display: none; flex-direction: column; justify-content: center; position: absolute;">
+            <ui:VisualElement name="DeathBox" class="container" style="flex-grow: 1; background-color: rgb(46, 46, 46); width: 40%; height: auto; max-height: 70%; align-self: center; align-items: stretch; top: auto; bottom: auto; flex-direction: column; justify-content: flex-start;">
+                <ui:Label tabindex="-1" text="You Died" display-tooltip-when-elided="true" name="death-text" style="color: rgb(255, 255, 255); font-size: 50px; align-items: stretch; align-self: center; -unity-text-align: upper-left; margin-top: 19px;" />
+                <ui:VisualElement name="DeathButtons" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: space-around;">
+                    <ui:Button text="Restart" display-tooltip-when-elided="true" name="restart-button" class="button" />
+                    <ui:Button text="Exit to Menu" display-tooltip-when-elided="true" name="exit-to-menu-button" class="button" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

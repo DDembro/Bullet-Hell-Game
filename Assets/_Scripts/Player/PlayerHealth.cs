@@ -1,13 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
     // Registro del controller del player y otros componentes
+    private GameObject player;
     private PlayerController playerController;
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
+
+    // Script UI del juego (Para llamar al metodo ShowDeathMenu)
+    private GamePlayUI gamePlayUI;
+
+    // Obtenemos Prefabs utiles
+    private GameObject explosionPrefab;
 
     // Variables
     public float Health;
@@ -16,7 +24,7 @@ public class PlayerHealth : MonoBehaviour
     private void Awake()
     {
         // Obtenemos el jugador para simplificar la busqueda mas adelante
-        GameObject player = GameObject.FindWithTag("Player");
+        player = GameObject.FindWithTag("Player");
 
         // Obtenemos la referencia al controller del jugador
         playerController = player.GetComponent<PlayerController>();
@@ -24,6 +32,8 @@ public class PlayerHealth : MonoBehaviour
         spriteRenderer = player.GetComponent<SpriteRenderer>();
         rb = player.GetComponent<Rigidbody2D>();
 
+        // Obtenemos el prefab de la explosion
+        explosionPrefab = Resources.Load<GameObject>("Prefabs/Explosion");
     }
 
     private void Start()
@@ -32,6 +42,22 @@ public class PlayerHealth : MonoBehaviour
         Health = playerController._Health;
         inmuneTime = playerController._inmuneTime;
 
+        // Obtenemos el UI
+        gamePlayUI = GameObject.Find("GamePlayUI").GetComponent<GamePlayUI>();
+    }
+
+    private IEnumerator Die()
+    {
+        // Mostramos una explosion y desactivamos tanto visual como fisicamente al jugador
+        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        spriteRenderer.enabled = false;
+        rb.simulated = false;
+
+        // Esperamos un poco antes de mostrar la pantalla de muerte
+        yield return new WaitForSeconds(1.5f);
+
+        // Llamamos al metodo encargado de mostrar la pantalla de muerte
+        gamePlayUI.ShowDeathMenu();
     }
 
     private void TakeDamage(float damage)
@@ -39,7 +65,15 @@ public class PlayerHealth : MonoBehaviour
         // recibimos daño
         Health -= damage;
 
-        StartCoroutine(ImmunityTime());
+        if(Health > 0)
+        {
+            StartCoroutine(ImmunityTime());
+        }
+        else
+        {
+            // Si nos quedamos sin vida, morimos
+            StartCoroutine(Die());
+        }
     }
 
     private IEnumerator ImmunityTime()

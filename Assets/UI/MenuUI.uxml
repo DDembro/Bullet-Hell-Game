@@ -1,11 +1,11 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/UI/USS/backGround.uss?fileID=7433441132597879392&amp;guid=e70df211a5928694b83354161f39b19d&amp;type=3#backGround" />
-    <ui:VisualElement name="backGround" class="backGround" style="flex-grow: 1; background-color: rgb(55, 55, 55); background-image: none; width: 100%; height: 100%; -unity-background-scale-mode: stretch-to-fill; -unity-slice-left: 0; -unity-slice-top: 0; -unity-slice-right: 0; -unity-slice-bottom: 0; -unity-slice-scale: 1px;">
-        <ui:VisualElement name="principalMenu" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); background-image: none;">
-            <ui:Label tabindex="-1" text="Juego de naves piolas" display-tooltip-when-elided="true" name="game-title" style="color: rgb(255, 255, 255); overflow: visible; visibility: visible; display: flex; font-size: 90px; left: 0; align-items: stretch; justify-content: flex-start; align-self: center; top: 10%;" />
-            <ui:Button text="Button" display-tooltip-when-elided="true" name="play" />
-            <ui:Button text="Button" display-tooltip-when-elided="true" name="options" />
-            <ui:Button text="Button" display-tooltip-when-elided="true" name="exit" />
+    <Style src="project://database/Assets/UI/USS/MenuStyles.uss?fileID=7433441132597879392&amp;guid=ac08d473ba1facd4f97324f59aba9372&amp;type=3#MenuStyles" />
+    <ui:VisualElement class="container" style="flex-grow: 1; background-color: rgb(65, 65, 65);">
+        <ui:Label tabindex="-1" text="No se que nombre ponerle al juego" display-tooltip-when-elided="true" name="game-title" class="gameTitle" style="display: flex; font-size: 50%;" />
+        <ui:VisualElement name="Buttons" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: flex-start; align-self: center; align-items: stretch; max-width: none; min-width: auto; width: auto; max-height: none; min-height: auto; margin-left: 98px; margin-right: 98px; margin-top: 98px; margin-bottom: 98px; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0;">
+            <ui:Button text="Play" display-tooltip-when-elided="true" name="play-button" class="button" style="align-self: stretch;" />
+            <ui:Button text="Options (WIP)" display-tooltip-when-elided="true" name="option-button" class="button" />
+            <ui:Button text="Exit Game" display-tooltip-when-elided="true" name="exit-button" class="button" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
