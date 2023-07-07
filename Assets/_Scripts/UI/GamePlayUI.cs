@@ -71,6 +71,10 @@ public class GamePlayUI : MonoBehaviour
     {
         // Actualizamos el display del nivel obteniendo el nivel actual
         levelLabel.text = "Level " + SceneManager.GetActiveScene().buildIndex;
+
+        // Obtenemos en tiempo real las estadisticas que queremos
+        playerHealth = playerController.PlayerHealth.Health;
+        playerScore = playerController.PlayerEconomy.PlayerScore;
     }
 
     private void Update()

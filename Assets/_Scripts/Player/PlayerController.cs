@@ -24,30 +24,48 @@ public class PlayerController : MonoBehaviour
 
     // Variables del movimiento
     [Header("Movimiento")]
-    public float _horizontalSpeed = 7f;
-    public float _verticalSpeed = 5f;
+    public float _horizontalSpeed;
+    public float _verticalSpeed;
 
-    public float _maxHorizontalOffSet = 11f;
-    public float _minHorizontalOffSet = -11f;
+    public float _maxHorizontalOffSet;
+    public float _minHorizontalOffSet;
 
-    public float _maxVerticalOffSet = 4f;
-    public float _minVerticalOffSet = -11f;
+    public float _maxVerticalOffSet;
+    public float _minVerticalOffSet;
 
     // Variables del disparo
     [Header("Disparo")]
-    public float _fireRate = 0.2f;
+    public float _fireRate;
 
     // Variables de las balas
     [Header("Balas")]
-    public float _BulletSpeed = 10f;
-    public float _BulletDamage = 1f;
+    public float _BulletSpeed;
+    public float _BulletDamage;
 
     // Variables de la vida
-    public float _Health = 10f;
-    public float _inmuneTime = 0.5f;
+    public float _Health;
+    public float _inmuneTime;
 
     private void Awake()
     {
+        // Inicializamos las variables
+        _horizontalSpeed = 7f;
+        _verticalSpeed = 5f;
+
+        _maxHorizontalOffSet = 11f;
+        _minHorizontalOffSet = -11f;
+
+        _maxVerticalOffSet = 4f;
+        _minVerticalOffSet = -11f;
+
+        _fireRate = 0.2f;
+
+        _BulletSpeed = 10f;
+        _BulletDamage = 1f;
+
+        _Health = 10f;
+        _inmuneTime = 0.5f;
+
         // Obtenemos la referencia al jugador
         playerGO = GameObject.FindWithTag("Player");
 

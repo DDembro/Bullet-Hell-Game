@@ -71,6 +71,7 @@
     <Compile Include="Assets\_Scripts\Enemies\Titan\TitanController.cs" />
     <Compile Include="Assets\_Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\_Scripts\UI\GamePlayUI.cs" />
+    <Compile Include="Assets\_Scripts\ScriptableObjects\PlayerScriptableObject.cs" />
     <Compile Include="Assets\_Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\_Scripts\Others\Explosion\ExplosionController.cs" />
     <Compile Include="Assets\_Scripts\Player\PlayerShooting.cs" />

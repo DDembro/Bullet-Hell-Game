@@ -19,10 +19,16 @@ public class PlayerShooting : MonoBehaviour
     // Variable para ver si esta disponible el proximo disparo
     private bool canShoot;
 
+    // AudioSource Del efecto de disparo
+    private AudioSource shootingAudio;
+
     private void Awake()
     {
         // Obtenemos la referencia al controller del jugador
-        playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        playerController = GetComponent<PlayerController>();
+
+        // Obtenemos el efecto de disparo
+        shootingAudio = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -56,6 +62,9 @@ public class PlayerShooting : MonoBehaviour
     {
         // Generamos la bala
         GameObject bullet = Instantiate(bulletPrefab, gunCannon.position, gunCannon.rotation);
+        // Hacemos el sonido de disparar
+        shootingAudio.enabled = true;
+        shootingAudio.Play();
         // Hacemos falso canShoot
         canShoot = false;
 
