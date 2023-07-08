@@ -52,6 +52,7 @@ public class PlayerHealth : MonoBehaviour
         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         spriteRenderer.enabled = false;
         rb.simulated = false;
+        player.GetComponent<PlayerShooting>().enabled = false;
 
         // Esperamos un poco antes de mostrar la pantalla de muerte
         yield return new WaitForSeconds(1.5f);

@@ -11,7 +11,9 @@
                     <ui:Label tabindex="-1" text="Score:" display-tooltip-when-elided="true" name="score-count" class="statsDisplay" />
                     <ui:Label tabindex="-1" text="Life:" display-tooltip-when-elided="true" name="health-count" class="statsDisplay" />
                 </ui:VisualElement>
-                <ui:VisualElement name="RightElements" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);" />
+                <ui:VisualElement name="RightElements" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: column-reverse; align-items: flex-end; justify-content: space-between; align-self: auto;">
+                    <ui:Label tabindex="-1" text="Time:" display-tooltip-when-elided="true" name="level-timer-count" class="statsDisplay" style="flex-direction: column; justify-content: flex-start; left: auto; width: 30%;" />
+                </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="MenuView" tabindex="0" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.51); display: none; flex-direction: column; justify-content: center; overflow: visible; visibility: visible; left: auto; position: absolute;">

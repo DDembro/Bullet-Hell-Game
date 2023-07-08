@@ -10,6 +10,8 @@ public class GamePlayUI : MonoBehaviour
     private VisualElement root;
     // Referencia a PlayerController
     private PlayerController playerController;
+    // Referencia al Spawner de enemigos
+    private EnemySpawnManager enemySpawnManager;
 
     // Obtenemos los elementos que queremos modificar del UI
     // Las vistas:
@@ -20,6 +22,7 @@ public class GamePlayUI : MonoBehaviour
     private Label healthLabel;
     private Label scoreLabel;
     private Label levelLabel;
+    private Label timerLabel;
     // Botones:
     private List<Button> exitToMenuButtons;
     private Button resumeButton;
@@ -36,8 +39,9 @@ public class GamePlayUI : MonoBehaviour
 
     private void OnEnable()
     {
-        // Obtenemos la referencia al controller del jugador
+        // Obtenemos las referencias
         playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        enemySpawnManager = GameObject.Find("EnemySpawner").GetComponent<EnemySpawnManager>();
 
         // Obtenemos el elemento root
         root = GetComponent<UIDocument>().rootVisualElement;
@@ -51,6 +55,7 @@ public class GamePlayUI : MonoBehaviour
         healthLabel = root.Q<Label>("health-count");
         scoreLabel = root.Q<Label>("score-count");
         levelLabel = root.Q<Label>("level-count");
+        timerLabel = root.Q<Label>("level-timer-count");
 
         // Obtenemos los botones
         exitToMenuButtons = root.Query<Button>("exit-to-menu-button").ToList();
@@ -83,10 +88,10 @@ public class GamePlayUI : MonoBehaviour
         playerHealth = playerController.PlayerHealth.Health;
         playerScore = playerController.PlayerEconomy.PlayerScore;
 
-        // Actualizamos el texto que muestra la vida para mostrar el valor actual
+        // Actualizamos el texto que muestran las etiquetas que cambian
         healthLabel.text = "Life: " + playerHealth;
-        // Lo mismo con el puntaje
         scoreLabel.text = "Score: " + playerScore;
+        timerLabel.text = "Time: " + Mathf.CeilToInt(enemySpawnManager.LevelTimer);
 
         // Al precionar Esc, abrimos el menu, ademas lo impedimos si el jugador esta muerto
         if (Input.GetKeyDown(KeyCode.Escape) && !isDeathActive)
