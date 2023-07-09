@@ -73,7 +73,7 @@ public class RocketController : MonoBehaviour
         for(int i = 0; i < 24; i++)
         {
             // Instanciamos la bala en la posicion y la rotacion del cohete, y por cada bala rotamos el angulo un poco
-            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.Euler(0f, 0f, 360 / 24 * i));
+            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.Euler(0f, 0f, 360 / 12 * i));
 
             // Pasar la referencia al objeto padre al objeto bullet
             bullet.GetComponent<NeutralBulletController>().SetParentRocket(this);

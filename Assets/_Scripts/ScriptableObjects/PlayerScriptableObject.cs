@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "PlayerScriptableObject", menuName = "ScriptableObtects/Player")]

@@ -212,6 +212,7 @@ MonoBehaviour:
   BulletDamage: 0
   FireRate: 0
   MultipleShoot: 0
+  OnDeathScore: 0
 --- !u!1 &3742505998654316231
 GameObject:
   m_ObjectHideFlags: 0

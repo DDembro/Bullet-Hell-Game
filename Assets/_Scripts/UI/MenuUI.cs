@@ -9,25 +9,53 @@ public class MenuUI : MonoBehaviour
     // Definimos el elemento Root
     private VisualElement root;
 
+    // Referencia a cada vista
+    private VisualElement mainMenuView;
+    private VisualElement optionView;
+    private VisualElement creditView;
+
     // Referencias a cada boton
     private Button playButton;
     private Button optionButton;
+    private Button creditButton;
     private Button exitButton;
+
+    private List<Button> goBackButtons;
 
     private void OnEnable()
     {
         // Obtenemos el elemento root
         root = GetComponent<UIDocument>().rootVisualElement;
 
+        // Obtenemos cada vista
+        mainMenuView = root.Q<VisualElement>("MainMenuView");
+        optionView = root.Q<VisualElement>("OptionView");
+        creditView = root.Q<VisualElement>("CreditView");
+
         // Obtenemos cada boton
         playButton = root.Q<Button>("play-button");
         optionButton = root.Q<Button>("option-button");
+        creditButton = root.Q<Button>("credit-button");
         exitButton = root.Q<Button>("exit-button");
+
+        goBackButtons = root.Query<Button>("go-back-button").ToList();
 
         // Callbacks
         playButton.RegisterCallback<ClickEvent>(StartLevel);
         optionButton.RegisterCallback<ClickEvent>(ShowOptions);
+        creditButton.RegisterCallback<ClickEvent>(ShowCredits);
         exitButton.RegisterCallback<ClickEvent>(ExitGame);
+
+        foreach (Button button in goBackButtons)
+        {
+            button.RegisterCallback<ClickEvent>(ShowMainMenu);
+        }
+
+        // Si la tasa de FPS es "infinita", la seteamos a 60 por defecto
+        if (Application.targetFrameRate <= 0)
+        {
+            Application.targetFrameRate = 60;
+        }
     }
     
     private void StartLevel(ClickEvent click)
@@ -36,9 +64,31 @@ public class MenuUI : MonoBehaviour
         SceneManager.LoadScene(1 , LoadSceneMode.Single);
     }
 
+    private void ShowMainMenu(ClickEvent click)
+    {
+        // Ocultamos el resto de vistas y habilitamos solo el menu principal
+        mainMenuView.style.display = DisplayStyle.Flex;
+
+        optionView.style.display = DisplayStyle.None;
+        creditView.style.display = DisplayStyle.None;
+    }
+
     private void ShowOptions(ClickEvent click)
     {
-        // Falta implementar una vista para las opciones (y pensar que opciones cambiar lol)
+        // Ocultamos el resto de vistas y habilitamos solo las opciones
+        optionView.style.display = DisplayStyle.Flex;
+
+        mainMenuView.style.display = DisplayStyle.None;
+        creditView.style.display = DisplayStyle.None;
+    }
+
+    private void ShowCredits(ClickEvent click)
+    {
+        // Ocultamos el resto de vistas y habilitamos solo los creditos
+        creditView.style.display = DisplayStyle.Flex;
+
+        mainMenuView.style.display = DisplayStyle.None;
+        optionView.style.display = DisplayStyle.None;
     }
 
     private void ExitGame(ClickEvent click)
@@ -50,6 +100,3 @@ public class MenuUI : MonoBehaviour
         #endif
     }
 }
-// Faltan funciones para los botones de opciones
-// Estaria bueno incorporar una pantalla de seleccion de niveles
-// Tambien ver donde carajo meto la tienda
