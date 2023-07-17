@@ -12,7 +12,6 @@ public abstract class EnemyController : MonoBehaviour
 
     // Estadisticas generales
     public float Health;
-    public float Damage;
     public float MelleDamage;
 
     public float HorizontalSpeed;

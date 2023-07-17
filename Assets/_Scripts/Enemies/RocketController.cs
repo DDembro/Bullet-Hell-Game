@@ -70,10 +70,11 @@ public class RocketController : MonoBehaviour
     private void Explode()
     {
         // Al explotar, creamos un aro de balas
-        for(int i = 0; i < 24; i++)
+        int bullets = 12;
+        for(int i = 0; i < bullets; i++)
         {
             // Instanciamos la bala en la posicion y la rotacion del cohete, y por cada bala rotamos el angulo un poco
-            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.Euler(0f, 0f, 360 / 12 * i));
+            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.Euler(0f, 0f, 360 / bullets * i));
 
             // Pasar la referencia al objeto padre al objeto bullet
             bullet.GetComponent<NeutralBulletController>().SetParentRocket(this);

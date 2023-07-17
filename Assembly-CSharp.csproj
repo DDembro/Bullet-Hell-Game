@@ -58,6 +58,7 @@
     <Analyzer Include="D:\Unity\2022.2.15f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\_Scripts\Enemies\Bosses\BigTitanController.cs" />
     <Compile Include="Assets\_Scripts\Enemies\Helicopter\HelicopterController.cs" />
     <Compile Include="Assets\_Scripts\Enemies\EnemySpawnManager.cs" />
     <Compile Include="Assets\_Scripts\Enemies\EnemyController.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Assets\_Scripts\ScriptableObjects\PlayerScriptableObject.cs" />
     <Compile Include="Assets\_Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\_Scripts\Others\Explosion\ExplosionController.cs" />
+    <Compile Include="Assets\_Scripts\Enemies\Turret\TurretController.cs" />
     <Compile Include="Assets\_Scripts\Player\PlayerShooting.cs" />
   </ItemGroup>
   <ItemGroup>

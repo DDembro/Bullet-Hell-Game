@@ -4,7 +4,7 @@
         <ui:VisualElement name="GamePlayView" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); display: flex;">
             <ui:VisualElement name="UpperContainer" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); align-items: auto; align-self: auto; height: 10%; flex-direction: column; justify-content: flex-start; flex-wrap: nowrap;">
                 <ui:Label tabindex="-1" text="Level" display-tooltip-when-elided="true" name="level-count" class="statsDisplay" style="justify-content: flex-start; align-self: flex-start;" />
-                <ui:ProgressBar value="30.02" title="BOSS NAME" name="boss-bar" class="bossBar" style="align-self: center; align-items: stretch; justify-content: flex-start; flex-direction: column; overflow: visible; top: -50%; position: relative; visibility: hidden; display: flex;" />
+                <ui:ProgressBar value="21.7" title="BOSS NAME" name="boss-bar" class="bossBar" style="align-self: center; align-items: stretch; justify-content: flex-start; flex-direction: column; overflow: visible; top: -50%; position: relative; visibility: hidden; display: flex;" />
             </ui:VisualElement>
             <ui:VisualElement name="DownContainer" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-width: auto; min-height: auto; flex-direction: row; align-items: stretch; justify-content: flex-start;">
                 <ui:VisualElement name="LeftElements" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: space-between;">

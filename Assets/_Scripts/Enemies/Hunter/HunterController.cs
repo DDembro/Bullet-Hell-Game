@@ -16,7 +16,6 @@ public class HunterController : EnemyController
     {
         // Inicializamos las variables
         this.Health = 5f;
-        this.Damage = 1f;
         this.MelleDamage = 1f;
         this.HorizontalSpeed = 5f;
         this.VerticalSpeed = 4f;

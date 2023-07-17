@@ -27,7 +27,6 @@ public class HelicopterController : EnemyController
     {
         // Inicializamos las variables
         this.Health = 5f;
-        this.Damage = 1f;
         this.MelleDamage = 1f;
         this.HorizontalSpeed = 15f;
         this.VerticalSpeed = 10f;

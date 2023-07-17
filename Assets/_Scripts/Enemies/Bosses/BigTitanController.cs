@@ -2,35 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TitanController : EnemyController
+public class BigTitanController : EnemyController
 {
     // Vectores de movimiento
-    private Vector3 horizontalMovement;
     private Vector3 verticalMovement;
-    private int moveRight = 1;
 
     // Cañones de donde se instancia la bala
     private Transform leftCannon;
     private Transform rightCannon;
 
     // Otras variables
-    private float horizontalRange = 6f;
-    private float verticalTarget = 8.5f;
+    private float verticalTarget = 6f;
 
     private void Start()
     {
         // Inicializamos las variables
-        this.Health = 10f;
-        this.MelleDamage = 0f;
+        this.Health = 50f;
+        this.MelleDamage = 3f;
         this.HorizontalSpeed = 3f;
-        this.VerticalSpeed = 2f;
+        this.VerticalSpeed = 1f;
 
         this.BulletSpeed = 0f; // No afecta en este enemigo
-        this.BulletDamage = 1f; // No afecta en este enemigo
-        this.FireRate = 5f;
+        this.BulletDamage = 0f; // No afecta en este enemigo
+        this.FireRate = 7f;
         this.MultipleShoot = 2;
 
-        this.OnDeathScore = 1500;
+        this.OnDeathScore = 20000;
 
         // Obtenemos el prefab de la bala que queremos utilizar y le asignamos las estadisticas que predefinimos arriba
         GetBullet("Prefabs/Bullets/BigRocket");
@@ -42,19 +39,6 @@ public class TitanController : EnemyController
 
     private void Update()
     {
-        // Calculamos el movimiento
-
-        // Movimiento horizontal
-        if (transform.position.x < -horizontalRange)
-        {
-            moveRight = 1; // Moverse a la derecha
-        }
-        else if(transform.position.x > horizontalRange)
-        {
-            moveRight = -1; // Moverse a la izquierda
-        }
-        horizontalMovement = new Vector3(moveRight * HorizontalSpeed * Time.deltaTime, 0, 0);
-
         // Movimiento vertical
         if (transform.position.y > verticalTarget)
         {
@@ -64,11 +48,8 @@ public class TitanController : EnemyController
         {
             verticalMovement = Vector3.zero;
         }
-        // Vector final del movimiento
-        Vector3 movement = horizontalMovement + verticalMovement;
-
         // Aplicamos el movimiento
-        transform.Translate(movement);
+        transform.Translate(verticalMovement);
 
         // Disparamos con ambas armas
         StartCoroutine(Shoot(leftCannon.position, leftCannon.rotation));
@@ -85,7 +66,7 @@ public class TitanController : EnemyController
             GameObject bullet = collision.gameObject;
 
             // Efectuamos el daño
-            TakeDamageBoss(bullet, 4f);
+            TakeDamageBoss(bullet, 8f);
         }
     }
 }
