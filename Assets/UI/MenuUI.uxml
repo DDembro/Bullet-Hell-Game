@@ -11,12 +11,22 @@
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="OptionView" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); display: none; flex-direction: column; align-items: stretch; opacity: 1;">
-            <ui:Label tabindex="-1" text="Options (WIP)" display-tooltip-when-elided="true" name="option-tittle" class="headerText" style="align-self: center; -unity-text-align: middle-center; min-height: 30%; align-items: stretch;" />
-            <ui:VisualElement name="OptionsBox" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); display: flex; align-self: center; width: 40%; justify-content: flex-start;">
-                <ui:DropdownField label="FPS" index="-1" choices="3" focusable="true" name="fps-dropdown" class="text" style="-unity-text-align: upper-left;" />
-                <ui:DropdownField label="Resolution" index="-1" choices="3" focusable="true" name="resolution-dropdown" class="text" style="-unity-text-align: upper-left; text-overflow: clip; white-space: normal;" />
-                <ui:SliderInt picking-mode="Ignore" label="Audio" value="42" high-value="100" name="audio-slider-int" class="text" style="-unity-text-align: upper-left;" />
-                <ui:SliderInt picking-mode="Ignore" label="Music" value="42" high-value="100" name="music-slider-int" class="text" style="-unity-text-align: upper-left;" />
+            <ui:Label tabindex="-1" text="Options" display-tooltip-when-elided="true" name="option-tittle" class="headerText" style="align-self: center; -unity-text-align: middle-center; min-height: 30%; align-items: stretch;" />
+            <ui:VisualElement name="OptionsBox" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); display: flex; align-self: center; width: 40%; justify-content: flex-start; flex-direction: row;">
+                <ui:VisualElement name="OptionsLabels" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: space-around; align-items: flex-start;">
+                    <ui:Label tabindex="-1" text="FPS" display-tooltip-when-elided="true" name="fps-label" class="text" />
+                    <ui:Label tabindex="-1" text="Resolution" display-tooltip-when-elided="true" name="resolution-label" class="text" />
+                    <ui:Label tabindex="-1" text="Audio" display-tooltip-when-elided="true" name="audio-label" class="text" />
+                    <ui:Label tabindex="-1" text="Music" display-tooltip-when-elided="true" name="music-label" class="text" />
+                    <ui:Label tabindex="-1" text="Full Screen" display-tooltip-when-elided="true" name="fullscreen-label" class="text" />
+                </ui:VisualElement>
+                <ui:VisualElement name="OptionsFields" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: space-around;">
+                    <ui:DropdownField index="-1" focusable="true" name="fps-dropdown" class="text" style="-unity-text-align: upper-left; font-size: 20px;" />
+                    <ui:DropdownField index="-1" focusable="true" name="resolution-dropdown" class="text" style="-unity-text-align: upper-left; text-overflow: clip; white-space: normal; font-size: 20px;" />
+                    <ui:SliderInt picking-mode="Ignore" value="0" high-value="0" name="audio-slider-int" low-value="-80" class="text" style="-unity-text-align: upper-left;" />
+                    <ui:SliderInt picking-mode="Ignore" value="0" high-value="0" name="music-slider-int" low-value="-80" class="text" style="-unity-text-align: upper-left;" />
+                    <ui:Toggle focusable="true" name="fullscreen-toggle" class="text" />
+                </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="BottomOptionsBox" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); width: 30%; align-self: center; height: 50%; justify-content: flex-end;">
                 <ui:Button text="Go Back" display-tooltip-when-elided="true" name="go-back-button" class="button" style="-unity-text-align: upper-center; justify-content: flex-start; min-width: 30%; align-self: stretch; align-items: stretch; flex-direction: column; position: relative; margin-top: 30px; margin-bottom: 110px; margin-left: 30px; margin-right: 30px;" />

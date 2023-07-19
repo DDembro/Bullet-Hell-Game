@@ -24,7 +24,7 @@ public class BigTitanController : EnemyController
 
         this.BulletSpeed = 0f; // No afecta en este enemigo
         this.BulletDamage = 0f; // No afecta en este enemigo
-        this.FireRate = 7f;
+        this.FireRate = 5f;
         this.MultipleShoot = 2;
 
         this.OnDeathScore = 20000;

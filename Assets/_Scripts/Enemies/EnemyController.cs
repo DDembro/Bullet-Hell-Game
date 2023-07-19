@@ -191,7 +191,7 @@ public abstract class EnemyController : MonoBehaviour
 
         if (bullet.CompareTag("EnemyBullet"))
         {
-            // Pasar la referencia al objeto padre al objeto bullet
+            // Pasar la referencia del objeto padre a la bala
             bullet.GetComponent<EnemyBulletController>().SetParentObject(this);
         }
         else if (bullet.CompareTag("Rocket"))

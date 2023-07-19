@@ -50,12 +50,6 @@ public class MenuUI : MonoBehaviour
         {
             button.RegisterCallback<ClickEvent>(ShowMainMenu);
         }
-
-        // Si la tasa de FPS es "infinita", la seteamos a 60 por defecto
-        if (Application.targetFrameRate <= 0)
-        {
-            Application.targetFrameRate = 60;
-        }
     }
     
     private void StartLevel(ClickEvent click)

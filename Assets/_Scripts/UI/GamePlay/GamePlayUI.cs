@@ -63,7 +63,7 @@ public class GamePlayUI : MonoBehaviour
         restartButton = root.Q<Button>("restart-button");
 
 
-        // CallBacks
+        // CallBacks de los botones interactuables (Pausa y muerte)
         foreach(Button button in exitToMenuButtons)
         {
             button.RegisterCallback<ClickEvent>(GoToMainMenu);
@@ -76,10 +76,6 @@ public class GamePlayUI : MonoBehaviour
     {
         // Actualizamos el display del nivel obteniendo el nivel actual
         levelLabel.text = "Level " + SceneManager.GetActiveScene().buildIndex;
-
-        // Obtenemos en tiempo real las estadisticas que queremos
-        playerHealth = playerController.PlayerHealth.Health;
-        playerScore = playerController.PlayerEconomy.PlayerScore;
     }
 
     private void Update()
@@ -133,6 +129,15 @@ public class GamePlayUI : MonoBehaviour
 
         // Por si acaso, nos aseguramos que el menu esta desactivado
         menuView.style.display = DisplayStyle.None;
+    }
+
+    /// <summary>
+    /// Metodo publico que es llamado desde BossUIController
+    /// </summary>
+    public void ShowWinMenu()
+    {
+        // FALTA CREAR UNA VISTA DE VICTORIA Y TODAS SUS OPCIONES
+        Debug.Log("Ganaste!!");
     }
 
     private void GoToMainMenu(ClickEvent click)

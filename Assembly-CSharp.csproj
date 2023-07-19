@@ -59,23 +59,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_Scripts\Enemies\Bosses\BigTitanController.cs" />
+    <Compile Include="Assets\_Scripts\UI\GamePlay\BossUIController.cs" />
     <Compile Include="Assets\_Scripts\Enemies\Helicopter\HelicopterController.cs" />
     <Compile Include="Assets\_Scripts\Enemies\EnemySpawnManager.cs" />
     <Compile Include="Assets\_Scripts\Enemies\EnemyController.cs" />
-    <Compile Include="Assets\_Scripts\UI\MenuUI.cs" />
     <Compile Include="Assets\_Scripts\Player\PlayerBulletController.cs" />
+    <Compile Include="Assets\_Scripts\UI\Menu\MenuOptions.cs" />
     <Compile Include="Assets\_Scripts\Enemies\Hunter\HunterController.cs" />
     <Compile Include="Assets\_Scripts\Others\NeutralBulletController.cs" />
+    <Compile Include="Assets\_Scripts\UI\Menu\MenuUI.cs" />
     <Compile Include="Assets\_Scripts\Enemies\EnemyBulletController.cs" />
     <Compile Include="Assets\_Scripts\Player\PlayerHealth.cs" />
     <Compile Include="Assets\_Scripts\Player\PlayerEconomy.cs" />
     <Compile Include="Assets\_Scripts\Enemies\RocketController.cs" />
     <Compile Include="Assets\_Scripts\Enemies\Titan\TitanController.cs" />
     <Compile Include="Assets\_Scripts\Player\PlayerController.cs" />
-    <Compile Include="Assets\_Scripts\UI\GamePlayUI.cs" />
     <Compile Include="Assets\_Scripts\ScriptableObjects\PlayerScriptableObject.cs" />
     <Compile Include="Assets\_Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\_Scripts\Others\Explosion\ExplosionController.cs" />
+    <Compile Include="Assets\_Scripts\UI\GamePlay\GamePlayUI.cs" />
     <Compile Include="Assets\_Scripts\Enemies\Turret\TurretController.cs" />
     <Compile Include="Assets\_Scripts\Player\PlayerShooting.cs" />
   </ItemGroup>
