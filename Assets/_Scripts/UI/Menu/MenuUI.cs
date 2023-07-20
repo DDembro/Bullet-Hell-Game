@@ -41,7 +41,7 @@ public class MenuUI : MonoBehaviour
         goBackButtons = root.Query<Button>("go-back-button").ToList();
 
         // Callbacks
-        playButton.RegisterCallback<ClickEvent>(StartLevel);
+        playButton.RegisterCallback<ClickEvent>(LoadLevelSelector);
         optionButton.RegisterCallback<ClickEvent>(ShowOptions);
         creditButton.RegisterCallback<ClickEvent>(ShowCredits);
         exitButton.RegisterCallback<ClickEvent>(ExitGame);
@@ -52,10 +52,12 @@ public class MenuUI : MonoBehaviour
         }
     }
     
-    private void StartLevel(ClickEvent click)
+    private void LoadLevelSelector(ClickEvent click)
     {
-        // Al precionar click en el boton play, cargamos el primer nivel
-        SceneManager.LoadScene(1 , LoadSceneMode.Single);
+        // Cargamos el menu de seleccion de niveles
+        // El menu de seleccion de niveles siempre esta al final en el indice de Builds
+        int totalScenes = SceneManager.sceneCountInBuildSettings;
+        SceneManager.LoadScene(totalScenes - 1, LoadSceneMode.Single);
     }
 
     private void ShowMainMenu(ClickEvent click)

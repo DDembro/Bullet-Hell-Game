@@ -18,11 +18,18 @@ public class GamePlayUI : MonoBehaviour
     private VisualElement gamePlayView;
     private VisualElement menuView;
     private VisualElement deathView;
+    private VisualElement winView;
+
     // Etiquetas:
+        // GamePlay:
     private Label healthLabel;
     private Label scoreLabel;
     private Label levelLabel;
     private Label timerLabel;
+        // Pantalla de Victoria:
+    private Label winScoreValue;
+    private Label winMoneyValue;
+
     // Botones:
     private List<Button> exitToMenuButtons;
     private Button resumeButton;
@@ -36,6 +43,7 @@ public class GamePlayUI : MonoBehaviour
     // Variables adicionales
     private bool isMenuActive = false;
     private bool isDeathActive = false;
+    private bool isWinActive = false;
 
     private void OnEnable()
     {
@@ -50,6 +58,7 @@ public class GamePlayUI : MonoBehaviour
         gamePlayView = root.Q<VisualElement>("GamePlayView");
         menuView = root.Q<VisualElement>("MenuView");
         deathView = root.Q<VisualElement>("DeathView");
+        winView = root.Q<VisualElement>("WinView");
 
         // Obtenemos las etiquetas
         healthLabel = root.Q<Label>("health-count");
@@ -57,16 +66,20 @@ public class GamePlayUI : MonoBehaviour
         levelLabel = root.Q<Label>("level-count");
         timerLabel = root.Q<Label>("level-timer-count");
 
+        winScoreValue = root.Q<Label>("win-score-value");
+        winMoneyValue = root.Q<Label>("win-money-value");
+
         // Obtenemos los botones
         exitToMenuButtons = root.Query<Button>("exit-to-menu-button").ToList();
         resumeButton = root.Q<Button>("resume-button");
         restartButton = root.Q<Button>("restart-button");
 
 
-        // CallBacks de los botones interactuables (Pausa y muerte)
+        // CallBacks de los botones interactuables (Pausa, Muerte y Victoria)
         foreach(Button button in exitToMenuButtons)
         {
-            button.RegisterCallback<ClickEvent>(GoToMainMenu);
+            // Este boton esta en comun entre varias de las vistas
+            button.RegisterCallback<ClickEvent>(LoadLevelSelector);
         }
         resumeButton.RegisterCallback<ClickEvent>(ShowMenu);
         restartButton.RegisterCallback<ClickEvent>(RestartLevel);
@@ -89,8 +102,8 @@ public class GamePlayUI : MonoBehaviour
         scoreLabel.text = "Score: " + playerScore;
         timerLabel.text = "Time: " + Mathf.CeilToInt(enemySpawnManager.LevelTimer);
 
-        // Al precionar Esc, abrimos el menu, ademas lo impedimos si el jugador esta muerto
-        if (Input.GetKeyDown(KeyCode.Escape) && !isDeathActive)
+        // Al precionar Esc, abrimos el menu, ademas lo impedimos si el jugador esta muerto o ya gano
+        if (Input.GetKeyDown(KeyCode.Escape) && !isDeathActive && !isWinActive)
         {
             ShowMenu(null);
         }
@@ -127,24 +140,52 @@ public class GamePlayUI : MonoBehaviour
         deathView.style.display = DisplayStyle.Flex;
         isDeathActive = true;
 
-        // Por si acaso, nos aseguramos que el menu esta desactivado
+        // Por si acaso, nos aseguramos que el menu y la victoria estan desactivados
         menuView.style.display = DisplayStyle.None;
+        winView.style.display = DisplayStyle.None;
     }
 
     /// <summary>
     /// Metodo publico que es llamado desde BossUIController
     /// </summary>
-    public void ShowWinMenu()
+    public IEnumerator ShowWinMenu()
     {
-        // FALTA CREAR UNA VISTA DE VICTORIA Y TODAS SUS OPCIONES
-        Debug.Log("Ganaste!!");
+        // Esperamos un tiempo antes de mostrar la pantalla de victoria
+        yield return new WaitForSeconds(3);
+
+        // En caso de que el jugador haya muerto justo despues de terminar el nivel, lo hacemos perder igualmente
+        if(playerHealth <= 0)
+        {
+            ShowDeathMenu();
+            yield return null;
+        }
+        // En caso contrario:
+        else
+        {
+            // Paramos el tiempo y hacemos true haber ganado el nivel
+            Time.timeScale = 0f;
+            isWinActive = true;
+
+            // Le damos al jugador dinero equivalente al 10% de su puntaje
+            float money = playerScore/10;
+            playerController.PlayerEconomy.AddMoney(money);
+
+            // Pasamos los valores de las estadisticas a los Labels correspondientes
+            winScoreValue.text = playerScore.ToString();
+            winMoneyValue.text = money.ToString() + "$";
+
+            // Activamos la Vista de Victoria
+            winView.style.display = DisplayStyle.Flex;
+        }
     }
 
-    private void GoToMainMenu(ClickEvent click)
+    private void LoadLevelSelector(ClickEvent click)
     {
-        // Cargamos el menu principal y activamos el tiempo otra vez
+        // Cargamos el menu de seleccion de niveles y activamos el tiempo otra vez
         Time.timeScale = 1f;
-        SceneManager.LoadScene(0, LoadSceneMode.Single);
+        // El menu de seleccion de niveles siempre esta al final en el indice de Builds
+        int totalScenes = SceneManager.sceneCountInBuildSettings;
+        SceneManager.LoadScene(totalScenes - 1, LoadSceneMode.Single);
     }
 
     private void RestartLevel(ClickEvent click)

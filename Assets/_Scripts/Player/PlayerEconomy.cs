@@ -19,9 +19,18 @@ public class PlayerEconomy : MonoBehaviour
 
     public void AddScore(float score)
     {
-        // Aumentamos el puntaje, y el dinero de forma proporcional a este
+        // Aumentamos el puntaje
         PlayerScore += score;
-        PlayerMoney += score/10;
+    }
+
+    /// <summary>
+    /// Esta funcion se encarga de añadir dinero al jugador. Es llamada por GamePlayUI luego de haber ganado un nivel
+    /// </summary>
+    /// <param name="money"></param>
+    public void AddMoney(float money)
+    {
+        // Aumentamos el dinero del jugador
+        PlayerMoney += money;
     }
 
     public void ResetScore()

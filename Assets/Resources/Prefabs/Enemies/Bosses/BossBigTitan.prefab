@@ -169,7 +169,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 0
-  Damage: 0
   MelleDamage: 0
   HorizontalSpeed: 0
   VerticalSpeed: 0
@@ -248,6 +247,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 185300850091081244}
     m_Modifications:
+    - target: {fileID: 4010064190638570904, guid: d3433bdbef532de40abaa0390736e633, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8774583792176671901, guid: d3433bdbef532de40abaa0390736e633, type: 3}
       propertyPath: m_Name
       value: RightTurret
@@ -314,6 +317,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 185300850091081244}
     m_Modifications:
+    - target: {fileID: 4010064190638570904, guid: d3433bdbef532de40abaa0390736e633, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8774583792176671901, guid: d3433bdbef532de40abaa0390736e633, type: 3}
       propertyPath: m_Name
       value: LeftTurret

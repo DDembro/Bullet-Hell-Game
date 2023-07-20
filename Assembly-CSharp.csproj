@@ -61,6 +61,7 @@
     <Compile Include="Assets\_Scripts\Enemies\Bosses\BigTitanController.cs" />
     <Compile Include="Assets\_Scripts\UI\GamePlay\BossUIController.cs" />
     <Compile Include="Assets\_Scripts\Enemies\Helicopter\HelicopterController.cs" />
+    <Compile Include="Assets\_Scripts\UI\LevelSelector\LevelSelectorUI.cs" />
     <Compile Include="Assets\_Scripts\Enemies\EnemySpawnManager.cs" />
     <Compile Include="Assets\_Scripts\Enemies\EnemyController.cs" />
     <Compile Include="Assets\_Scripts\Player\PlayerBulletController.cs" />
@@ -83,7 +84,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\UI\MenuUI.uxml" />
+    <None Include="Assets\UI\USS\LevelSelectorStyles.uss" />
     <None Include="Assets\UI\USS\GamePlayStyles.uss" />
+    <None Include="Assets\UI\LevelSelectorUI.uxml" />
     <None Include="Assets\UI\USS\MenuStyles.uss" />
     <None Include="Assets\UI\GamePlayUI.uxml" />
   </ItemGroup>

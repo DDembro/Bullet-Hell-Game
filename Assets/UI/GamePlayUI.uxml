@@ -18,8 +18,8 @@
         </ui:VisualElement>
         <ui:VisualElement name="MenuView" tabindex="0" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.51); display: none; flex-direction: column; justify-content: center; overflow: visible; visibility: visible; left: auto; position: absolute;">
             <ui:VisualElement name="MenuBox" class="container" style="flex-grow: 1; background-color: rgb(46, 46, 46); width: 40%; height: auto; max-height: 70%; align-self: center; align-items: stretch; top: auto; bottom: auto; flex-direction: column; justify-content: flex-start;">
-                <ui:Label tabindex="-1" text="Paused" display-tooltip-when-elided="true" name="pause-text" style="color: rgb(255, 255, 255); font-size: 50px; align-items: stretch; align-self: center; -unity-text-align: upper-left; margin-top: 19px;" />
-                <ui:VisualElement name="MenuButtons" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: space-around;">
+                <ui:Label tabindex="-1" text="Paused" display-tooltip-when-elided="true" name="pause-text" class="text" />
+                <ui:VisualElement name="MenuButtons" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: center;">
                     <ui:Button text="Resume" display-tooltip-when-elided="true" name="resume-button" class="button" />
                     <ui:Button text="Exit to Menu" display-tooltip-when-elided="true" name="exit-to-menu-button" class="button" />
                 </ui:VisualElement>
@@ -27,10 +27,28 @@
         </ui:VisualElement>
         <ui:VisualElement name="DeathView" tabindex="0" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.51); display: none; flex-direction: column; justify-content: center; position: absolute;">
             <ui:VisualElement name="DeathBox" class="container" style="flex-grow: 1; background-color: rgb(46, 46, 46); width: 40%; height: auto; max-height: 70%; align-self: center; align-items: stretch; top: auto; bottom: auto; flex-direction: column; justify-content: flex-start;">
-                <ui:Label tabindex="-1" text="You Died" display-tooltip-when-elided="true" name="death-text" style="color: rgb(255, 255, 255); font-size: 50px; align-items: stretch; align-self: center; -unity-text-align: upper-left; margin-top: 19px;" />
-                <ui:VisualElement name="DeathButtons" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: space-around;">
+                <ui:Label tabindex="-1" text="You Died" display-tooltip-when-elided="true" name="death-text" class="text" />
+                <ui:VisualElement name="DeathButtons" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: center;">
                     <ui:Button text="Restart" display-tooltip-when-elided="true" name="restart-button" class="button" />
                     <ui:Button text="Exit to Menu" display-tooltip-when-elided="true" name="exit-to-menu-button" class="button" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="WinView" tabindex="0" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.51); display: none; flex-direction: column; justify-content: center; overflow: visible; visibility: visible; left: auto; position: absolute;">
+            <ui:VisualElement name="WinBox" class="container" style="flex-grow: 1; background-color: rgb(46, 46, 46); width: 40%; height: auto; max-height: 70%; align-self: center; align-items: stretch; top: auto; bottom: auto; flex-direction: column; justify-content: flex-start;">
+                <ui:Label tabindex="-1" text="You Win!!" display-tooltip-when-elided="true" name="win-text" class="text" />
+                <ui:VisualElement name="WinTexts" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row;">
+                    <ui:VisualElement name="WinLabels" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: space-around; align-items: center;">
+                        <ui:Label tabindex="-1" text="Score:" display-tooltip-when-elided="true" name="win-score-label" class="win-text" />
+                        <ui:Label tabindex="-1" text="Money:" display-tooltip-when-elided="true" name="win-money-label" class="win-text" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="WinValues" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: space-around; flex-direction: column; align-items: center;">
+                        <ui:Label tabindex="-1" text="000" display-tooltip-when-elided="true" name="win-score-value" class="win-text" style="display: flex;" />
+                        <ui:Label tabindex="-1" text="$000" display-tooltip-when-elided="true" name="win-money-value" class="win-text" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="WinButtons" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: center; height: 50%;">
+                    <ui:Button text="Exit to Menu" display-tooltip-when-elided="true" name="exit-to-menu-button" class="button" style="margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>

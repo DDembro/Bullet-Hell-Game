@@ -12,6 +12,7 @@ public class EnemySpawnManager : MonoBehaviour
         [SerializeField] public GameObject enemyPrefab;
         [SerializeField] public float spawnDelay;
         [SerializeField] public int maxSpawn; // Maxima cantidad de enemigos de ese tipo que pueden estar a la vez
+        [SerializeField] public float spawnChance; // Posibilidad de que el enemigo spawnee entre las demas opciones
     }
 
     // Array de los enemigos a spawnear HAY QUE CARGARLOS A MANO EN CADA INSTANCIA DE ESTE SCRIPT**
@@ -31,6 +32,10 @@ public class EnemySpawnManager : MonoBehaviour
     // Temporizador de la ronda actual
     public float LevelTimer; // El contador se inicia de manera MANUAL
 
+
+    // Otras variables
+    private float totalProbability = 0f; // Suma de todas las probabilidades de cada enemigo diferente
+
     private void Start()
     {
         // Obtenemos el contenedor
@@ -38,6 +43,9 @@ public class EnemySpawnManager : MonoBehaviour
 
         // Actualizamos constantemente el punto en el que aparecen los enemigos
         InvokeRepeating("GetRandomPositionX", 0f, 1f);
+
+        // Obtenemos la probabilidad de todos los enemigos
+        GetProbability();
     }
     
     private void Update()
@@ -63,16 +71,41 @@ public class EnemySpawnManager : MonoBehaviour
         randomSpawnPositionX = UnityEngine.Random.Range(-range, range);
     }
 
-    private static T RandomEnemyIndex<T>(List<T> list)
+    private void GetProbability()
+    {
+        // Por cada enemigo cargado, leemos y almacenamos su posibilidad de spawnear en un total
+        totalProbability = 0f;
+        foreach (enemyData item in enemies)
+        {
+            totalProbability += item.spawnChance;
+        }
+    }
+
+    private T RandomEnemyIndex<T>(List<T> list)
     {
         // En caso de estar vacia o no existir la lista, generamos un error
         if (list == null || list.Count == 0)
         {
             throw new ArgumentException("La lista no puede estar vacia");
         }
-        // Calculamos un index aleatorio
-        int randomIndex = UnityEngine.Random.Range(0, list.Count);
-        return list[randomIndex];
+
+        // Generamos un número aleatorio entre 0 y la suma total de las probabilidades
+        float randomValue = UnityEngine.Random.Range(0f, totalProbability);
+
+        // Iteramos a través de los elementos y seleccionamos el primero cuya probabilidad acumulada sea mayor que el número aleatorio
+        float accumulatedProbability = 0f;
+        for (int i = 0; i < list.Count; i++)
+        {
+            float probability = enemies[i].spawnChance;
+            accumulatedProbability += probability;
+            if (randomValue <= accumulatedProbability)
+            {
+                return list[i];
+            }
+        }
+
+        // Si no se seleccionó ningún elemento, se devuelve el primero de la lista
+        return list[0];
     }
 
     /// <summary>
@@ -132,24 +165,5 @@ public class EnemySpawnManager : MonoBehaviour
         // Esperamos el tiempo indicado entre spawns
         yield return new WaitForSeconds(enemy.spawnDelay);
         canSpawn = true;
-    }
-
-    /// <summary>
-    /// Esta funcion es la encargada de instanciar a los jefes, es directamente llamada
-    /// por la clase BossUIController quien le pasa el prefab del jefe
-    /// El jefe es instanciado al inicio del nivel, sin embargo lo desactivamos. El encargado de volver a activarlo es BossUIController
-    /// </summary>
-    /// <param name="bossPrefab"></param>
-    public GameObject SpawnBoss(GameObject bossPrefab)
-    {
-        // Instanciamos el jefe en la posicion objetivo
-        GameObject bossInstance = Instantiate(bossPrefab, new Vector3(0, spawnPositionY, 0f), bossPrefab.transform.rotation);
-        // Hacemos que sea hijo del contenedor de enemigos
-        bossInstance.transform.parent = enemiesInScene.transform;
-        // Lo desactivamos
-        bossInstance.SetActive(false);
-
-        // Devolvemos la referencia al jefe spawneado
-        return bossInstance;
     }
 }
