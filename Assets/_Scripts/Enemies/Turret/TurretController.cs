@@ -10,7 +10,7 @@ public class TurretController : EnemyController
     private GameObject player;
 
     // Otras variables
-    private int bulletSpray = 3;
+    private int bulletSpray = 5;
     private float sprayCoolDown = 1.5f;
     private bool canSpray = true;
 
@@ -19,17 +19,17 @@ public class TurretController : EnemyController
     private void Start()
     {
         // Inicializamos las variables
-        this.Health = 5f;
+        this.Health = 3f;
         this.MelleDamage = 1f;
         this.HorizontalSpeed = 0f;
         this.VerticalSpeed = 0f;
 
-        this.BulletSpeed = 8f;
+        this.BulletSpeed = 10f;
         this.BulletDamage = 1f;
         this.FireRate = 0.2f;
         this.MultipleShoot = 1;
 
-        this.OnDeathScore = 100;
+        this.OnDeathScore = 200;
 
         // Obtenemos el prefab de la bala que queremos utilizar y le asignamos las estadisticas que predefinimos arriba
         GetBullet("Prefabs/Bullets/EnemyBullet");

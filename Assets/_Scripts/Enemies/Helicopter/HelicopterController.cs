@@ -36,7 +36,7 @@ public class HelicopterController : EnemyController
         this.FireRate = 0.8f;
         this.MultipleShoot = 1;
 
-        this.OnDeathScore = 200;
+        this.OnDeathScore = 300;
 
         // Obtenemos el prefab de la bala que queremos utilizar
         GetBullet("Prefabs/Bullets/EnemyBullet");

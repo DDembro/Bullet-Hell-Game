@@ -20,13 +20,13 @@ public class TitanController : EnemyController
     private void Start()
     {
         // Inicializamos las variables
-        this.Health = 10f;
-        this.MelleDamage = 0f;
+        this.Health = 25f;
+        this.MelleDamage = 2f;
         this.HorizontalSpeed = 3f;
         this.VerticalSpeed = 2f;
 
         this.BulletSpeed = 0f; // No afecta en este enemigo
-        this.BulletDamage = 1f; // No afecta en este enemigo
+        this.BulletDamage = 0f; // No afecta en este enemigo
         this.FireRate = 5f;
         this.MultipleShoot = 2;
 

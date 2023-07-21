@@ -190,7 +190,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19855823, g: 0.30373883, b: 0.4339623, a: 1}
+  m_BackGroundColor: {r: 0.19464225, g: 0.33529398, b: 0.509434, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -612,15 +612,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies:
   - enemyPrefab: {fileID: 1429702517761683306, guid: 05eb01aad84410b43bd5bb36f1465586, type: 3}
-    spawnDelay: 2
+    spawnDelay: 2.5
     maxSpawn: 5
-    spawnChance: 60
-  - enemyPrefab: {fileID: 7285747123202894885, guid: 9af40762a36b666458e38802528ac225, type: 3}
-    spawnDelay: 3
-    maxSpawn: 3
-    spawnChance: 40
+    spawnChance: 100
   spawnPositionY: 16
-  maxEnemiesAtTime: 5
+  maxEnemiesAtTime: 4
   LevelTimer: 30
 --- !u!1 &1736475058
 GameObject:

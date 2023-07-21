@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
     {
         // Inicializamos las variables
         _horizontalSpeed = 7f;
-        _verticalSpeed = 5f;
+        _verticalSpeed = _horizontalSpeed/2;
 
         _maxHorizontalOffSet = 11f;
         _minHorizontalOffSet = -11f;

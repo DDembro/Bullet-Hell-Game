@@ -5,16 +5,16 @@
             <ui:Button text="Back" display-tooltip-when-elided="true" name="back-to-menu-button" class="button" style="align-self: flex-start; overflow: hidden; position: absolute; min-width: 15%; min-height: auto; height: 7%; width: 15%;" />
             <ui:Label tabindex="-1" text="Select a Level" display-tooltip-when-elided="true" name="level-selector-title" enable-rich-text="true" class="headerText" style="display: flex; font-size: 70%; -unity-font: initial; -unity-font-style: bold; -unity-text-align: upper-center; margin-left: 40px; margin-right: 40px; margin-top: 40px; margin-bottom: 70px; align-self: center;" />
             <ui:VisualElement name="LevelsBox" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.28); flex-wrap: wrap; flex-direction: row; justify-content: space-between;">
+                <ui:Button text="Training" display-tooltip-when-elided="true" name="tutorial-button" class="level-button" />
                 <ui:Button text="Level 1" display-tooltip-when-elided="true" name="level-1-button" class="level-button" />
                 <ui:Button text="Level 2" display-tooltip-when-elided="true" name="level-2-button" class="level-button" />
-                <ui:Button text="Button" display-tooltip-when-elided="true" class="level-button" />
-                <ui:Button text="Button" display-tooltip-when-elided="true" class="level-button" />
-                <ui:Button text="Button" display-tooltip-when-elided="true" class="level-button" />
-                <ui:Button text="Button" display-tooltip-when-elided="true" class="level-button" />
-                <ui:Button text="Button" display-tooltip-when-elided="true" class="level-button" />
-                <ui:Button text="Button" display-tooltip-when-elided="true" class="level-button" />
-                <ui:Button text="Button" display-tooltip-when-elided="true" class="level-button" />
-                <ui:Button text="Button" display-tooltip-when-elided="true" class="level-button" />
+                <ui:Button text="Level 3" display-tooltip-when-elided="true" name="level-3-button" class="level-button" />
+                <ui:Button text="Button" display-tooltip-when-elided="true" class="level-button" style="display: flex; visibility: hidden;" />
+                <ui:Button text="Button" display-tooltip-when-elided="true" class="level-button" style="display: flex; visibility: hidden;" />
+                <ui:Button text="Button" display-tooltip-when-elided="true" class="level-button" style="visibility: hidden;" />
+                <ui:Button text="Button" display-tooltip-when-elided="true" class="level-button" style="visibility: hidden;" />
+                <ui:Button text="Button" display-tooltip-when-elided="true" class="level-button" style="visibility: hidden;" />
+                <ui:Button text="Button" display-tooltip-when-elided="true" class="level-button" style="visibility: hidden;" />
             </ui:VisualElement>
             <ui:VisualElement name="BottomBox" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row;">
                 <ui:VisualElement name="ShopBox" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); align-self: auto; align-items: stretch; justify-content: center; width: 50%;">
@@ -25,32 +25,35 @@
                     <ui:VisualElement name="Stats" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row;">
                         <ui:VisualElement name="Stats1" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row;">
                             <ui:VisualElement name="StatsLabels1" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: space-around; align-self: auto; align-items: stretch;">
-                                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" class="text" />
-                                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" class="text" />
-                                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" class="text" />
+                                <ui:Label tabindex="-1" text="Life" display-tooltip-when-elided="true" name="life-label" class="text" />
+                                <ui:Label tabindex="-1" text="damage" display-tooltip-when-elided="true" name="damage-label" class="text" />
+                                <ui:Label tabindex="-1" text="Fire Rate" display-tooltip-when-elided="true" name="fire-rate-label" class="text" />
                             </ui:VisualElement>
                             <ui:VisualElement name="StatsValues1" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: space-around;">
-                                <ui:Label tabindex="-1" text="0" display-tooltip-when-elided="true" class="text" />
-                                <ui:Label tabindex="-1" text="0" display-tooltip-when-elided="true" class="text" />
-                                <ui:Label tabindex="-1" text="0" display-tooltip-when-elided="true" class="text" />
+                                <ui:Label tabindex="-1" text="10" display-tooltip-when-elided="true" name="life-value" class="text" />
+                                <ui:Label tabindex="-1" text="1" display-tooltip-when-elided="true" name="damage-value" class="text" />
+                                <ui:Label tabindex="-1" text="5 bullets/sec" display-tooltip-when-elided="true" name="fire-rate-value" class="text" />
                             </ui:VisualElement>
                         </ui:VisualElement>
                         <ui:VisualElement name="Stats2" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row;">
                             <ui:VisualElement name="StatsLabels2" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: space-around; align-self: auto; align-items: stretch;">
-                                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" class="text" />
-                                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" class="text" />
-                                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" class="text" />
+                                <ui:Label tabindex="-1" text="Speed" display-tooltip-when-elided="true" name="speed-label" class="text" />
+                                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" class="text" style="display: flex; visibility: hidden;" />
+                                <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" class="text" style="visibility: hidden;" />
                             </ui:VisualElement>
                             <ui:VisualElement name="StatsValues2" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: space-around;">
-                                <ui:Label tabindex="-1" text="0" display-tooltip-when-elided="true" class="text" />
-                                <ui:Label tabindex="-1" text="0" display-tooltip-when-elided="true" class="text" />
-                                <ui:Label tabindex="-1" text="0" display-tooltip-when-elided="true" class="text" />
+                                <ui:Label tabindex="-1" text="7" display-tooltip-when-elided="true" name="speed-value" class="text" />
+                                <ui:Label tabindex="-1" text="0" display-tooltip-when-elided="true" class="text" style="visibility: hidden;" />
+                                <ui:Label tabindex="-1" text="0" display-tooltip-when-elided="true" class="text" style="visibility: hidden;" />
                             </ui:VisualElement>
                         </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="ShopView" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);" />
+        <ui:VisualElement name="ShopView" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); display: none;">
+            <ui:Button text="Return" display-tooltip-when-elided="true" name="return-to-selector-button" class="button" style="align-self: flex-start; overflow: hidden; position: absolute; min-width: 15%; min-height: auto; height: 7%; width: 15%;" />
+            <ui:Label tabindex="-1" text="Shop" display-tooltip-when-elided="true" name="level-selector-title" enable-rich-text="true" class="headerText" style="display: flex; font-size: 70%; -unity-font: initial; -unity-font-style: bold; -unity-text-align: upper-center; margin-left: 40px; margin-right: 40px; margin-top: 40px; margin-bottom: 70px; align-self: center;" />
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

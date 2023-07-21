@@ -15,8 +15,8 @@ public class HunterController : EnemyController
     private void Start()
     {
         // Inicializamos las variables
-        this.Health = 5f;
-        this.MelleDamage = 1f;
+        this.Health = 4f;
+        this.MelleDamage = 2f;
         this.HorizontalSpeed = 5f;
         this.VerticalSpeed = 4f;
         
@@ -25,7 +25,7 @@ public class HunterController : EnemyController
         this.FireRate = 1f;
         this.MultipleShoot = 2;
 
-        this.OnDeathScore = 100;
+        this.OnDeathScore = 150;
 
         // Obtenemos el prefab de la bala que queremos utilizar y le asignamos las estadisticas que predefinimos arriba
         GetBullet("Prefabs/Bullets/EnemyBullet");

@@ -17,7 +17,7 @@ public class BigTitanController : EnemyController
     private void Start()
     {
         // Inicializamos las variables
-        this.Health = 50f;
+        this.Health = 150f;
         this.MelleDamage = 3f;
         this.HorizontalSpeed = 3f;
         this.VerticalSpeed = 1f;
