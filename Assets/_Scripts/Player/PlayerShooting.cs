@@ -63,7 +63,6 @@ public class PlayerShooting : MonoBehaviour
         // Generamos la bala
         GameObject bullet = Instantiate(bulletPrefab, gunCannon.position, gunCannon.rotation);
         // Hacemos el sonido de disparar
-        shootingAudio.enabled = true;
         shootingAudio.Play();
         // Hacemos falso canShoot
         canShoot = false;

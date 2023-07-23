@@ -1,0 +1,17 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/USS/TutorialStyles.uss?fileID=7433441132597879392&amp;guid=4e452e12b2da0d548adb630e63b33a0c&amp;type=3#TutorialStyles" />
+    <ui:VisualElement class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: flex-start;">
+        <ui:VisualElement name="TutorialBox1" class="tutorial-box" style="margin-top: 100px; max-height: 30%; min-height: 30%; display: flex;">
+            <ui:Label tabindex="-1" text="Hey recruit, are you ready for traning?&#10;&#10;&#10;Press Space to start!" display-tooltip-when-elided="true" name="tutorial-label1" class="text" style="margin-top: 30px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="TutorialBox2" class="tutorial-box" style="margin-top: 100px; max-height: 30%; min-height: 30%; display: none;">
+            <ui:Label tabindex="-1" text="Let&apos;s start with some basics.&#10;&#10;Use  W A S D or Arrows&#10; To move around" display-tooltip-when-elided="true" name="tutorial-label2" class="text" style="margin-top: 30px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="TutorialBox3" class="tutorial-box" style="margin-top: 100px; max-height: 30%; min-height: 30%; display: none;">
+            <ui:Label tabindex="-1" text="You are doing good!&#10;You can hold Space to start shooting&#10;&#10;Try shooting these enemies!" display-tooltip-when-elided="true" name="tutorial-label3" class="text" style="margin-top: 30px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="TutorialBox4" class="tutorial-box" style="margin-top: 100px; max-height: 30%; min-height: 30%; display: none;">
+            <ui:Label tabindex="-1" text="We´re done here recruit.&#10;Now show me what you are made of&#10;&#10;Press Space to go and Fight!" display-tooltip-when-elided="true" name="tutorial-label4" class="text" style="margin-top: 30px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

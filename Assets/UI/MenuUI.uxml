@@ -23,8 +23,8 @@
                 <ui:VisualElement name="OptionsFields" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: space-around;">
                     <ui:DropdownField index="-1" focusable="true" name="fps-dropdown" class="text" style="-unity-text-align: upper-left; font-size: 20px;" />
                     <ui:DropdownField index="-1" focusable="true" name="resolution-dropdown" class="text" style="-unity-text-align: upper-left; text-overflow: clip; white-space: normal; font-size: 20px;" />
-                    <ui:SliderInt picking-mode="Ignore" value="0" high-value="0" name="audio-slider-int" low-value="-80" class="text" style="-unity-text-align: upper-left;" />
-                    <ui:SliderInt picking-mode="Ignore" value="0" high-value="0" name="music-slider-int" low-value="-80" class="text" style="-unity-text-align: upper-left;" />
+                    <ui:SliderInt picking-mode="Ignore" value="-20" high-value="0" name="audio-slider-int" low-value="-80" class="text" style="-unity-text-align: upper-left;" />
+                    <ui:SliderInt picking-mode="Ignore" value="-20" high-value="0" name="music-slider-int" low-value="-80" class="text" style="-unity-text-align: upper-left;" />
                     <ui:Toggle focusable="true" name="fullscreen-toggle" class="text" />
                 </ui:VisualElement>
             </ui:VisualElement>
@@ -34,8 +34,9 @@
         </ui:VisualElement>
         <ui:VisualElement name="CreditView" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); display: none; flex-direction: column; align-items: stretch; opacity: 1;">
             <ui:Label tabindex="-1" text="Credits" display-tooltip-when-elided="true" name="credit-tittle" class="headerText" style="align-self: center; -unity-text-align: middle-center; min-height: 30%; align-items: stretch;" />
-            <ui:VisualElement name="CreditsBox" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); display: flex; align-self: center; justify-content: space-between;">
+            <ui:VisualElement name="CreditsBox" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); display: flex; align-self: center; justify-content: flex-start;">
                 <ui:Label tabindex="-1" text="game developed by Dembrowky Nicolas" display-tooltip-when-elided="true" name="credit-text-1" class="text" style="align-self: auto; align-items: auto;" />
+                <ui:Label tabindex="-1" text="&#10;Music: &quot;Level Up&quot;&#10;By Kevin MacLeod (incompetech.com)&#10;Licensed under Creative Commons: By Attribution 3.0&#10;http://creativecommons.org/licenses/by/3.0/" display-tooltip-when-elided="true" name="credit-text-2" class="text" style="align-self: auto; align-items: auto; -unity-text-align: upper-center;" />
             </ui:VisualElement>
             <ui:VisualElement name="BottomCreditsBox" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); width: 30%; align-self: center; height: 50%; justify-content: flex-end;">
                 <ui:Button text="Go Back" display-tooltip-when-elided="true" name="go-back-button" class="button" style="-unity-text-align: upper-center; justify-content: flex-start; min-width: 30%; align-self: stretch; align-items: stretch; flex-direction: column; position: relative; margin-top: 30px; margin-bottom: 110px; margin-left: 30px; margin-right: 30px;" />

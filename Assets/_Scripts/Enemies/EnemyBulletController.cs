@@ -22,7 +22,6 @@ public class EnemyBulletController : MonoBehaviour
     {
         // Generamos el sonido de la bala al ser disparada
         AudioSource shootSound = GetComponent<AudioSource>();
-        shootSound.enabled = true;
         shootSound.Play();
 
         // Definimos la velocidad y el daño segun las estadisticas del enemigo que la disparo

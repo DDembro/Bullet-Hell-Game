@@ -23,6 +23,9 @@ public class MenuOptions : MonoBehaviour
     // Audio de referencia al cambiar el nivel de volumen de SFX
     [SerializeField] private AudioSource testAudio;
 
+    // Variable auxiliar que indica si estamos en el menu o no
+    public bool IsInOptionMenu = false;
+
     private void OnEnable()
     {
         // Obtenemos el elemento root
@@ -159,9 +162,11 @@ public class MenuOptions : MonoBehaviour
         // Establecemos el nuevo valor de los efectos de sonido
         float volume = evt.newValue;
         audioMixer.SetFloat("SFXVolume", volume);
-        // Reproducimos un sonido de referencia para que el usuario sepa que volumen tiene en el juego
-        testAudio.enabled = true;
-        testAudio.Play();
+        // Reproducimos un sonido de referencia para que el usuario sepa que volumen tiene en el juego si estamos en el menu de opciones
+        if (IsInOptionMenu)
+        {
+            testAudio.Play();
+        }
     }
 
     private void SetMusicVolume(ChangeEvent<int> evt)

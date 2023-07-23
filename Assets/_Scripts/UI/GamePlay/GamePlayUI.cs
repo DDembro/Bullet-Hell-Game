@@ -87,8 +87,21 @@ public class GamePlayUI : MonoBehaviour
 
     private void Start()
     {
-        // Actualizamos el display del nivel obteniendo el nivel actual
-        levelLabel.text = "Level " + SceneManager.GetActiveScene().buildIndex;
+        // Obtenemos el total de escenas
+        int totalScenes = SceneManager.sceneCountInBuildSettings;
+
+        // Si no estamos en el tutorial:
+        if (SceneManager.GetActiveScene().buildIndex != totalScenes - 2)
+        {
+            // Actualizamos el display del nivel obteniendo el nivel actual
+            levelLabel.text = "Level " + SceneManager.GetActiveScene().buildIndex;
+        }
+        // En caso contrario el nivel es 0
+        else
+        {
+            levelLabel.text = "Level 0";
+        }
+
     }
 
     private void Update()

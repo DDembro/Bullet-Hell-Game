@@ -67,6 +67,9 @@ public class MenuUI : MonoBehaviour
 
         optionView.style.display = DisplayStyle.None;
         creditView.style.display = DisplayStyle.None;
+
+        // Hacemos falso estar viendo el menu en el script MenuOptions
+        GetComponent<MenuOptions>().IsInOptionMenu = true;
     }
 
     private void ShowOptions(ClickEvent click)
@@ -76,6 +79,9 @@ public class MenuUI : MonoBehaviour
 
         mainMenuView.style.display = DisplayStyle.None;
         creditView.style.display = DisplayStyle.None;
+
+        // Hacemos verdadero estar viendo el menu en el script MenuOptions
+        GetComponent<MenuOptions>().IsInOptionMenu = true;
     }
 
     private void ShowCredits(ClickEvent click)

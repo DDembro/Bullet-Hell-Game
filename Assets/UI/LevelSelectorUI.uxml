@@ -26,7 +26,7 @@
                         <ui:VisualElement name="Stats1" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row;">
                             <ui:VisualElement name="StatsLabels1" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: space-around; align-self: auto; align-items: stretch;">
                                 <ui:Label tabindex="-1" text="Life" display-tooltip-when-elided="true" name="life-label" class="text" />
-                                <ui:Label tabindex="-1" text="damage" display-tooltip-when-elided="true" name="damage-label" class="text" />
+                                <ui:Label tabindex="-1" text="Damage" display-tooltip-when-elided="true" name="damage-label" class="text" />
                                 <ui:Label tabindex="-1" text="Fire Rate" display-tooltip-when-elided="true" name="fire-rate-label" class="text" />
                             </ui:VisualElement>
                             <ui:VisualElement name="StatsValues1" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); justify-content: space-around;">

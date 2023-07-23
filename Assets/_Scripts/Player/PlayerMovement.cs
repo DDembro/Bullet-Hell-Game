@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static PlayerController;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -43,6 +41,13 @@ public class PlayerMovement : MonoBehaviour
 
         maxVerticalOffSet = playerController._maxVerticalOffSet;
         minVerticalOffSet = playerController._minVerticalOffSet;
+
+        // En el caso de estar en el tutorial, cambiamos el maxOffset vertival para nuestra convenencia
+        int totalScenes = SceneManager.sceneCountInBuildSettings;
+        if (SceneManager.GetActiveScene().buildIndex == totalScenes - 2)
+        {
+            maxVerticalOffSet = -4f;
+        }
     }
 
     private void Update()
